@@ -1,13 +1,11 @@
 apply plugin: 'com.android.application'
-
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
-
+    compileSdkVersion 19
+    buildToolsVersion '20.0.0'
     defaultConfig {
         applicationId "iavanish.collegepal"
-        minSdkVersion 14
-        targetSdkVersion 21
+        minSdkVersion 15
+        targetSdkVersion 19
         versionCode 1
         versionName "1.0"
     }
@@ -17,9 +15,32 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    productFlavors {
+    }
+    packagingOptions{
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+
+    }
+}
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.google.android.gms:play-services:7.0.0'
+    compile 'com.android.support:support-v4:20.+'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.3.3'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.3.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.3.3'
+    compile 'com.squareup.retrofit:retrofit:1.6.0'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.google.guava:guava:17.0'
+
 }
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:21.0.3'
+repositories {
+    mavenCentral()
 }
