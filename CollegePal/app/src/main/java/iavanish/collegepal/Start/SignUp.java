@@ -76,7 +76,7 @@ public class SignUp extends FragmentActivity implements
     private Button mRegisterButton;
     private TextView mStatus, mEmail;
 
-    private final String URL = "http://192.168.55.110:8080";
+    private final String URL = "http://192.168.55.74:8080";
     private UserClientApi userService = new RestAdapter.Builder()
             .setEndpoint(URL).setLogLevel(RestAdapter.LogLevel.FULL).build()
             .create(UserClientApi.class);

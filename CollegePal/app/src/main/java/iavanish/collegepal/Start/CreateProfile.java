@@ -159,8 +159,8 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
 
         final List <String> courseOffering = new ArrayList <String>();
         courseOffering.add("Practice of Programming");
-        courseOffering.add("Pattern Recognition");
         courseOffering.add("Data Structure and Algorithm");
+        courseOffering.add("Pattern Recognition");
         courseOffering.add("Mobile Computing");
         courseOffering.add("Programming Cloud Services");
         courseOffering.add("Machine Learning");

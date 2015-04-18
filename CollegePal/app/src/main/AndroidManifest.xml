@@ -1,42 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-package="iavanish.collegepal"
-android:versionCode="1"
-android:versionName="1.0"   >
+    package="iavanish.collegepal"
+    android:versionCode="1"
+    android:versionName="1.0" >
 
-<uses-sdk
-    android:minSdkVersion="9"
-    android:targetSdkVersion="19" />
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-<uses-permission android:name="android.permission.USE_CREDENTIALS" />
-<application
-    android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
-    android:label="@string/app_name" >
-    <activity
-        android:name=".Start.SignUp"
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".Start.SignUp"
+            android:label="@string/app_name" >
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-    <activity
-        android:name=".Start.CreateProfile"
-        android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".Start.CreateProfile"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-    </activity>
-    <activity
-        android:name=".Start.DisplayProfile"
-        android:label="@string/app_name" >
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Start.DisplayProfile"
+            android:label="@string/app_name" >
+        </activity>
 
-    </activity>
-    <meta-data
-        android:name="com.google.android.gms.version"
-        android:value="@integer/google_play_services_version" />
-</application>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".Courses.CreateCourse"
+            android:label="@string/title_activity_create_course" >
+        </activity>
+    </application>
 
 </manifest>

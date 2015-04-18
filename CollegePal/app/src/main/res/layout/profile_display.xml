@@ -154,26 +154,21 @@
         android:layout_height="wrap_content"
         android:text="Edit Profile"
         android:id="@+id/button_editprofile"
-        android:layout_alignBaseline="@+id/button_proceed"
-        android:layout_alignBottom="@+id/button_proceed"
-        android:layout_alignLeft="@+id/textView_courseOffering"
-        android:layout_alignStart="@+id/textView_courseOffering"
-        android:layout_marginLeft="17dp"
-        android:layout_marginStart="17dp"
-        android:width="125dp" />
+        android:width="125dp"
+        android:layout_alignTop="@+id/button_proceed"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Proceed"
         android:id="@+id/button_proceed"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="67dp"
+        android:width="125dp"
         android:layout_below="@+id/text_courseOffering"
-        android:layout_toRightOf="@+id/text_courseOffering"
-        android:layout_toEndOf="@+id/text_courseOffering"
-        android:layout_marginLeft="28dp"
-        android:layout_marginStart="28dp"
-        android:width="125dp" />
+        android:layout_toRightOf="@+id/textView_courseOffering"
+        android:layout_toEndOf="@+id/textView_courseOffering" />
 </RelativeLayout>
 <!--
 </ScrollView>-->

@@ -17,4 +17,5 @@
     <string name="play_services_error">Google Play services is not available.  This application will close.</string>
     <string name="close">Close</string>
     <string name="profile_picture">User\'s profile picture.</string>
+    <string name="title_activity_create_course">CreateCourse</string>
 </resources>
