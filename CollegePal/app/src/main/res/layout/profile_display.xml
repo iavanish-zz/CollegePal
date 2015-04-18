@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ScrollView01"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent" >-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
@@ -115,74 +115,65 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rating"
-        android:id="@+id/textView_rating"
+        android:text="Courses Enrolled"
+        android:id="@+id/textView_courseEnrolled"
+        android:layout_marginTop="26dp"
         android:layout_below="@+id/textView_skill"
-        android:layout_alignRight="@+id/textView_branch"
-        android:layout_alignEnd="@+id/textView_branch"
-        android:layout_marginTop="83dp" />
+        android:layout_alignLeft="@+id/textView_skill"
+        android:layout_alignStart="@+id/textView_skill" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/text_rating"
-        android:layout_alignTop="@+id/textView_rating"
+        android:id="@+id/text_courseEnrolled"
+        android:layout_alignTop="@+id/textView_courseEnrolled"
         android:layout_alignRight="@+id/text_skills"
         android:layout_alignEnd="@+id/text_skills" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gender"
-        android:id="@+id/textView_gender"
+        android:text="Courses Offering"
+        android:id="@+id/textView_courseOffering"
         android:layout_marginTop="26dp"
-        android:layout_below="@+id/textView_rating"
-        android:layout_alignLeft="@+id/textView_rating"
-        android:layout_alignStart="@+id/textView_rating" />
+        android:layout_below="@+id/textView_courseEnrolled"
+        android:layout_alignLeft="@+id/textView_courseEnrolled"
+        android:layout_alignStart="@+id/textView_courseEnrolled" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/text_gender"
-        android:layout_alignTop="@+id/textView_gender"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DOB"
-        android:id="@+id/textView_dob"
-        android:layout_marginTop="23dp"
-        android:layout_below="@+id/textView_gender"
-        android:layout_alignLeft="@+id/textView_gender"
-        android:layout_alignStart="@+id/textView_gender" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/text_dob"
-        android:layout_alignTop="@+id/textView_dob"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/text_courseOffering"
+        android:layout_alignBaseline="@+id/textView_courseOffering"
+        android:layout_alignBottom="@+id/textView_courseOffering"
+        android:layout_alignLeft="@+id/text_courseEnrolled"
+        android:layout_alignStart="@+id/text_courseEnrolled" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit Profile"
         android:id="@+id/button_editprofile"
-        android:layout_marginTop="36dp"
-        android:layout_below="@+id/textView_dob"
-        android:layout_alignLeft="@+id/textView_dob"
-        android:layout_alignStart="@+id/textView_dob" />
+        android:layout_alignBaseline="@+id/button_proceed"
+        android:layout_alignBottom="@+id/button_proceed"
+        android:layout_alignLeft="@+id/textView_courseOffering"
+        android:layout_alignStart="@+id/textView_courseOffering"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
+        android:width="125dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Proceed"
         android:id="@+id/button_proceed"
-        android:layout_alignTop="@+id/button_editprofile"
-        android:layout_toRightOf="@+id/text_dob"
-        android:layout_toEndOf="@+id/text_dob"
-        android:layout_marginLeft="38dp"
-        android:layout_marginStart="38dp" />
+        android:layout_marginTop="65dp"
+        android:layout_below="@+id/text_courseOffering"
+        android:layout_toRightOf="@+id/text_courseOffering"
+        android:layout_toEndOf="@+id/text_courseOffering"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:width="125dp" />
 </RelativeLayout>
-</ScrollView>
+<!--
+</ScrollView>-->

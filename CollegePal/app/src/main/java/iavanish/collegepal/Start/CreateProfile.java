@@ -25,20 +25,13 @@ import retrofit.RestAdapter;
  * Created by Himanshu on 3/29/2015.
  */
 public class CreateProfile extends Activity implements OnItemSelectedListener {
-    private final String URL = "http://192.168.55.110:8080";
-    private UserClientApi userService = new RestAdapter.Builder()
-            .setEndpoint(URL).setLogLevel(RestAdapter.LogLevel.FULL).build()
-            .create(UserClientApi.class);
 
     private Button mRegisterButton,mClearButton;
-    private EditText txtEmail,txtName,txtGender,txtDOB;
+    private EditText txtEmail,txtName;
     private Spinner spinnerCourse,spinnerBranch,spinnerInstitution;
-    private RatingBar rating;
-    MultiSelectionSpinner spinnerSkills;
-    User  user;
+    MultiSelectionSpinner spinnerSkills, spinnerCourseEnrolled, spinnerCourseOffering;
 
-    String _emailID,_name,_course,_branch,_institution,_skills,_gender,_dob;
-    float _rating=0.0f;
+    String _emailID,_name,_course,_branch,_institution,_skills,_courseEnrolled,_courseOffering;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,27 +40,15 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
 
         txtEmail = (EditText) findViewById(R.id.editText_emailID);
         txtName = (EditText) findViewById(R.id.editText_name);
-        txtGender = (EditText) findViewById(R.id.editText_gender);
-        txtDOB =(EditText) findViewById(R.id.editText_dob);
         spinnerCourse = (Spinner) findViewById(R.id.spinner_course);
         spinnerBranch = (Spinner) findViewById(R.id.spinner_branch);
         spinnerInstitution = (Spinner) findViewById(R.id.spinner_institution);
         spinnerSkills = (MultiSelectionSpinner) findViewById(R.id.spinner_skills);
-        rating=(RatingBar)findViewById(R.id.ratingBar);
-        /*rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            public void onRatingChanged(RatingBar ratingBar, float rating,
-                                        boolean fromUser) {
+        spinnerCourseEnrolled = (MultiSelectionSpinner) findViewById(R.id.spinner_courseEnrolled);
+        spinnerCourseOffering = (MultiSelectionSpinner) findViewById(R.id.spinner_courseOffering);
+        mRegisterButton = (Button) findViewById(R.id.button_register);
+        mClearButton = (Button) findViewById(R.id.button_clear);
 
-                Toast.makeText(getApplicationContext(), "Rating: " + String.valueOf(rating), Toast.LENGTH_LONG).show();
-            }
-
-        });*/
-        rating.setOnTouchListener(new View.OnTouchListener() {
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
-        rating.setFocusable(false);
         Intent in = getIntent();
 
         Bundle b = in.getExtras();
@@ -82,7 +63,6 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
 
         spinnerCourse.setOnItemSelectedListener(this);
 
-        // Spinner Drop down elements
         List <String> courses = new ArrayList <String>();
         courses.add("BTech 1st year");
         courses.add("BTech 2nd year");
@@ -161,8 +141,38 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
         skills.add("Power Electronics");
         spinnerSkills.setItems(skills);
 
-        mRegisterButton = (Button) findViewById(R.id.button_register);
-        mClearButton = (Button) findViewById(R.id.button_clear);
+        final List <String> courseEnrolled = new ArrayList <String>();
+        courseEnrolled.add("Practice of Programming");
+        courseEnrolled.add("Pattern Recognition");
+        courseEnrolled.add("Data Structure and Algorithm");
+        courseEnrolled.add("Mobile Computing");
+        courseEnrolled.add("Programming Cloud Services");
+        courseEnrolled.add("Machine Learning");
+        courseEnrolled.add("Data Mining");
+        courseEnrolled.add("Applied Cryptography");
+        courseEnrolled.add("Smart Coding");
+        courseEnrolled.add("Learning Hadoop");
+        courseEnrolled.add("Verilog Programming");
+        courseEnrolled.add("Learning Robotics");
+        courseEnrolled.add("Wireless Networking");
+        spinnerCourseEnrolled.setItems(courseEnrolled);
+
+        final List <String> courseOffering = new ArrayList <String>();
+        courseOffering.add("Practice of Programming");
+        courseOffering.add("Pattern Recognition");
+        courseOffering.add("Data Structure and Algorithm");
+        courseOffering.add("Mobile Computing");
+        courseOffering.add("Programming Cloud Services");
+        courseOffering.add("Machine Learning");
+        courseOffering.add("Data Mining");
+        courseOffering.add("Applied Cryptography");
+        courseOffering.add("Smart Coding");
+        courseOffering.add("Learning Hadoop");
+        courseOffering.add("Verilog Programming");
+        courseOffering.add("Learning Robotics");
+        courseOffering.add("Wireless Networking");
+        spinnerCourseOffering.setItems(courseOffering);
+
         mClearButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -170,8 +180,6 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
 
                 txtEmail.setText("");
                 txtName.setText("");
-                txtGender.setText("");
-                txtDOB.setText("");
 
             }
         });
@@ -180,7 +188,7 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
             @Override
             public void onClick(View v) {
                 getData();
-                if (_emailID.length() == 0 || _name.length() == 0 || _course.length() == 0 || _branch.length() == 0 || _institution.length() == 0 || _skills.length() == 0 || _gender.length() == 0 || _dob.length() == 0) {
+                if (_emailID.length() == 0 || _name.length() == 0 || _course.length() == 0 || _branch.length() == 0 || _institution.length() == 0 || _skills.length() == 0 || _courseEnrolled.length() == 0 || _courseOffering.length() == 0) {
                     Toast.makeText(getApplicationContext(), "Complete the form correctly", Toast.LENGTH_SHORT).show();
                 } else {
 
@@ -191,9 +199,8 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
                     b.putString("Branch", _branch);
                     b.putString("Institution", _institution);
                     b.putString("Skills", _skills);
-                    b.putFloat("Rating", _rating);
-                    b.putString("Gender", _gender);
-                    b.putString("DOB", _dob);
+                    b.putString("CourseEnrolled", _courseEnrolled);
+                    b.putString("CourseOffering", _courseOffering);
 
                     Intent intent = new Intent(CreateProfile.this, DisplayProfile.class);
                     intent.putExtras(b);
@@ -208,8 +215,8 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
         _emailID = txtEmail.getText().toString();
         _name = txtName.getText().toString();
         _skills = spinnerSkills.getSelectedItemsAsString();
-        _gender = txtGender.getText().toString();
-        _dob = txtDOB.getText().toString();
+        _courseEnrolled = spinnerCourseEnrolled.getSelectedItemsAsString();
+        _courseOffering = spinnerCourseOffering.getSelectedItemsAsString();
     }
 
     @Override
@@ -245,22 +252,5 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
         // TODO Auto-generated method stub
 
     }
-
-private class UserTask extends AsyncTask<String, Void, Boolean>
-{
-
-    @Override
-    protected Boolean doInBackground(String... params) {
-        Boolean ok = userService.addUser(user);
-        return ok;
-    }
-    @Override
-    protected void onPostExecute(Boolean b)
-    {
-        if(b)
-            Toast.makeText(getApplicationContext(),"Jai mata Di Done",Toast.LENGTH_LONG).show();
-            System.out.print("registration Check");
-    }
-}
 
 }

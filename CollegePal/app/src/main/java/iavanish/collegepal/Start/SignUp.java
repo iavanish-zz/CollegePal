@@ -61,17 +61,12 @@ public class SignUp extends FragmentActivity implements
 
     private static final int PROFILE_PIC_SIZE = 400;
 
-    // GoogleApiClient wraps our service connection to Google Play services and
-    // provides access to the users sign in state and Google's APIs.
     private GoogleApiClient mGoogleApiClient;
     private int mSignInProgress;
 
-    // Used to store the PendingIntent most recently returned by Google Play
-    // services until the user clicks 'sign in'.
     private PendingIntent mSignInIntent;
 
-    // Used to store the error code most recently returned by Google Play services
-    // until the user clicks 'sign in'.
+
     private int mSignInError;
     private boolean mSignInClicked=false;
 

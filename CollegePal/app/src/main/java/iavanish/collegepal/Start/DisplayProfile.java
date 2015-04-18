@@ -27,11 +27,11 @@ public class DisplayProfile extends Activity {
             .setEndpoint(URL).setLogLevel(RestAdapter.LogLevel.FULL).build()
             .create(UserClientApi.class);
 
-    TextView txt_emailID, txt_name, txt_course, txt_branch, txt_institution, txt_skills, txt_rating, txt_gender, txt_dob;
+    TextView txt_emailID, txt_name, txt_course, txt_branch, txt_institution, txt_skills, txt_courseEnrolled, txt_courseOffering;
     Button button_editprofile, button_proceed;
 
-    String _emailID,_name,_course,_branch,_institution,_skills,_gender,_taSubject;
-    float _rating=0.0f;
+    String _emailID,_name,_course,_branch,_institution,_skills,_courseEnrolled,_courseOffering;
+
     User  user;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +43,8 @@ public class DisplayProfile extends Activity {
         txt_branch = (TextView)findViewById(R.id.text_branch);
         txt_institution = (TextView)findViewById(R.id.text_institution);
         txt_skills = (TextView)findViewById(R.id.text_skills);
-        txt_rating = (TextView)findViewById(R.id.text_rating);
-        txt_gender = (TextView)findViewById(R.id.text_gender);
-        txt_dob = (TextView)findViewById(R.id.text_dob);
+        txt_courseEnrolled = (TextView)findViewById(R.id.text_courseEnrolled);
+        txt_courseOffering = (TextView)findViewById(R.id.text_courseOffering);
         button_editprofile =(Button) findViewById(R.id.button_editprofile);
         button_proceed =(Button) findViewById(R.id.button_proceed);
 
@@ -57,10 +56,9 @@ public class DisplayProfile extends Activity {
             _course = b.getString("Course");
             _branch = b.getString("Branch");
             _institution = b.getString("Institution");
-            _rating = b.getFloat("Rating");
             _skills = b.getString("Skills");
-            _gender = b.getString("Gender");
-            _taSubject = b.getString("DOB");
+            _courseEnrolled = b.getString("CourseEnrolled");
+            _courseOffering = b.getString("CourseOffering");
 
 
             txt_emailID.setText(_emailID);
@@ -69,26 +67,32 @@ public class DisplayProfile extends Activity {
             txt_branch.setText(_branch);
             txt_institution.setText(_institution);
             txt_skills.setText(_skills);
-            txt_rating.setText(Float.toString(_rating));
-            txt_gender.setText(_gender);
-            txt_dob.setText(_taSubject);
+            txt_courseEnrolled.setText(_courseEnrolled);
+            txt_courseOffering.setText(_courseOffering);
         }
         button_proceed.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Vector<String> skills=new Vector<String>();
-
                 List<String> skills_list = Arrays.asList(_skills.split("\\s*,\\s*"));
                 skills.addAll(skills_list);
+
+                Vector<String> coursesEnrolled=new Vector<String>();
+                List<String> coursesEnrolled_list = Arrays.asList(_courseEnrolled.split("\\s*,\\s*"));
+                coursesEnrolled.addAll(coursesEnrolled_list);
+
+                Vector<String> coursesOffering=new Vector<String>();
+                List<String> coursesOffering_list = Arrays.asList(_courseOffering.split("\\s*,\\s*"));
+                coursesOffering.addAll(coursesOffering_list);
+
                 String id = UUID.randomUUID().toString();
                 user=new User(id,_emailID,
                         _name,_course,_branch,
                         _institution,
                         skills,
-                        _rating,
-                        _gender,
-                        _taSubject);
+                        coursesEnrolled ,
+                        coursesOffering);
                 UserTask tsk = new UserTask();
                        tsk.execute();
 
