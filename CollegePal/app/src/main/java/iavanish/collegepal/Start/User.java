@@ -22,12 +22,10 @@ public class User {
     private String branch;
     private String institution;
     private Vector<String> skills;
-    private float rating;
-    private String professorTa;
-    private String subjectTa;
+    private Vector<String> courseEnrolled;
+    private Vector<String> coursesOffering;
 
-
-    public User(String id,String emailId, String name, String course, String branch, String institution, Vector<String> skills, float rating, String professorTa, String subjectTa) {
+    public User(String id,String emailId, String name, String course, String branch, String institution, Vector<String> skills, Vector<String> courseEnrolled, Vector<String> coursesOffering) {
         super();
         this.id=id;
         this.emailId=emailId;
@@ -37,9 +35,8 @@ public class User {
         this.branch = branch;
         this.institution = institution;
         this.skills = skills;
-        this.rating = rating;
-        this.professorTa = professorTa;
-        this.subjectTa = subjectTa;
+        this.courseEnrolled = courseEnrolled;
+        this.coursesOffering = coursesOffering;
 
     }
     public User()
@@ -76,7 +73,7 @@ public class User {
         return this.course;
     }
 
-    public void setCourse(String temp){
+    public void setStream(String temp){
         this.course = temp;
     }
 
@@ -92,6 +89,10 @@ public class User {
         return this.institution;
     }
 
+    public void setInstitution(String temp){
+        this.institution = temp;
+    }
+
     public void setSkills(Vector<String> temp){
         this.skills = temp;
     }
@@ -99,36 +100,20 @@ public class User {
     public Vector<String> getSkills(){
         return this.skills;
     }
-
-    public void setInstitution(String temp){
-        this.institution = temp;
+    public void setCourseEnrolled(Vector<String> temp){
+        this.courseEnrolled = temp;
     }
 
-    public float getRating(){
-        return this.rating;
+    public Vector<String> getCourseEnrolled(){
+        return this.courseEnrolled;
+    }
+    public void setCoursesOffering(Vector<String> temp){
+        this.coursesOffering = temp;
     }
 
-    public void setRating(float temp){
-        this.rating = temp;
+    public Vector<String> getCoursesOffering(){
+        return this.coursesOffering;
     }
-
-    public String getProfessorTa(){
-        return this.professorTa;
-    }
-
-    public void setProfessorTa(String temp){
-        this.professorTa = temp;
-    }
-
-    public String getSubjectTa(){
-        return this.subjectTa;
-    }
-
-    public void setSubjectTa(String temp){
-        this.subjectTa = temp;
-    }
-
-
 
     @Override
     public int hashCode() {

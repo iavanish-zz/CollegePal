@@ -47,7 +47,7 @@ public class SignUp extends FragmentActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         ResultCallback<People.LoadPeopleResult>, View.OnClickListener {
 
-    private static final String TAG = "ta-evaluator";
+    private static final String TAG = "collegePal";
 
     private static final int STATE_DEFAULT = 0;
     private static final int STATE_SIGN_IN = 1;
@@ -298,8 +298,7 @@ public class SignUp extends FragmentActivity implements
         updateUI(false);
         mStatus.setText(R.string.status_signed_out);
         mEmail.setText("");
-        /*mCirclesList.clear();
-        mCirclesAdapter.notifyDataSetChanged();*/
+
     }
 
     @Override
