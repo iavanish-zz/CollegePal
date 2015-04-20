@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
 
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,7 +22,6 @@
         <activity
             android:name=".Start.SignUp"
             android:label="@string/app_name" >
-
         </activity>
         <activity
             android:name=".Start.CreateProfile"
@@ -44,6 +44,10 @@
         <activity
             android:name=".Courses.CreateCourse"
             android:label="@string/title_activity_create_course" >
+        </activity>
+        <activity
+            android:name=".Courses.DisplayCourse"
+            android:label="@string/title_activity_display_course" >
         </activity>
     </application>
 

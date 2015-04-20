@@ -73,7 +73,7 @@ public class User {
         return this.course;
     }
 
-    public void setStream(String temp){
+    public void setCourse(String temp){
         this.course = temp;
     }
 

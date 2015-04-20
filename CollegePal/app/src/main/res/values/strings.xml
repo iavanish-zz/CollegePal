@@ -18,4 +18,5 @@
     <string name="close">Close</string>
     <string name="profile_picture">User\'s profile picture.</string>
     <string name="title_activity_create_course">CreateCourse</string>
+    <string name="title_activity_display_course">DisplayCourse</string>
 </resources>

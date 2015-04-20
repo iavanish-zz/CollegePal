@@ -2,16 +2,13 @@ package iavanish.collegepal.Start;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -19,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import iavanish.collegepal.R;
-import retrofit.RestAdapter;
 
 /**
  * Created by Himanshu on 3/29/2015.
@@ -43,7 +39,7 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
         spinnerCourse = (Spinner) findViewById(R.id.spinner_course);
         spinnerBranch = (Spinner) findViewById(R.id.spinner_branch);
         spinnerInstitution = (Spinner) findViewById(R.id.spinner_institution);
-        spinnerSkills = (MultiSelectionSpinner) findViewById(R.id.spinner_skills);
+        spinnerSkills = (MultiSelectionSpinner) findViewById(R.id.spinner_preRequisites);
         spinnerCourseEnrolled = (MultiSelectionSpinner) findViewById(R.id.spinner_courseEnrolled);
         spinnerCourseOffering = (MultiSelectionSpinner) findViewById(R.id.spinner_courseOffering);
         mRegisterButton = (Button) findViewById(R.id.button_register);

@@ -1,174 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ScrollView01"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >-->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent" >
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
-
+<TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email ID"
-        android:id="@+id/textView_emailID"
+        android:id="@+id/textView_courseID"
         android:layout_marginLeft="43dp"
         android:layout_marginStart="43dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginTop="22dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_emailID"
-        android:layout_alignTop="@+id/textView_emailID"
+        android:layout_weight="1"
+        android:layout_marginTop="42dp"
+        android:layout_alignTop="@+id/textView_courseID"
         android:layout_centerHorizontal="true" />
-
+</TableRow>
+<TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
         android:id="@+id/textView_name"
-        android:layout_below="@+id/textView_emailID"
-        android:layout_alignLeft="@+id/textView_emailID"
-        android:layout_alignStart="@+id/textView_emailID"
-        android:layout_marginTop="13dp" />
+        android:layout_marginLeft="43dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="22dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/text_name"
-        android:layout_alignBottom="@+id/textView_name"
-        android:layout_alignRight="@+id/text_emailID"
-        android:layout_alignEnd="@+id/text_emailID" />
-
+        android:layout_weight="1"
+        android:layout_marginTop="42dp"
+        android:id="@+id/text_name" />
+</TableRow>
+<TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Course"
         android:id="@+id/textView_course"
-        android:layout_marginTop="17dp"
-        android:layout_below="@+id/textView_name"
-        android:layout_alignLeft="@+id/textView_name"
-        android:layout_alignStart="@+id/textView_name" />
+        android:layout_marginLeft="43dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="22dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_course"
-        android:layout_alignTop="@+id/textView_course"
+        android:layout_weight="1"
+        android:layout_marginTop="42dp"
         android:layout_centerHorizontal="true" />
-
+</TableRow>
+<TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Branch"
         android:id="@+id/textView_branch"
-        android:layout_below="@+id/textView_course"
-        android:layout_alignLeft="@+id/textView_course"
-        android:layout_alignStart="@+id/textView_course"
-        android:layout_marginTop="16dp" />
+        android:layout_marginLeft="43dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="22dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_branch"
-        android:layout_alignTop="@+id/textView_branch"
+        android:layout_weight="1"
+        android:layout_marginTop="42dp"
         android:layout_centerHorizontal="true" />
-
+</TableRow>
+<TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Institution"
         android:id="@+id/textView_institution"
-        android:layout_below="@+id/textView_branch"
-        android:layout_alignLeft="@+id/textView_branch"
-        android:layout_alignStart="@+id/textView_branch"
-        android:layout_marginTop="17dp" />
+        android:layout_marginLeft="43dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="22dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_institution"
-        android:layout_alignTop="@+id/textView_institution"
+        android:layout_weight="1"
+        android:layout_marginTop="42dp"
         android:layout_centerHorizontal="true" />
-
+</TableRow>
+<TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Skills"
         android:id="@+id/textView_skill"
-        android:layout_below="@+id/textView_institution"
-        android:layout_alignLeft="@+id/textView_institution"
-        android:layout_alignStart="@+id/textView_institution"
-        android:layout_marginTop="19dp" />
+        android:layout_marginLeft="43dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="22dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/text_skills"
-        android:layout_alignTop="@+id/textView_skill"
-        android:layout_alignRight="@+id/text_institution"
-        android:layout_alignEnd="@+id/text_institution" />
-
+        android:layout_weight="1"
+        android:layout_marginTop="42dp"
+        android:id="@+id/text_skills"/>
+</TableRow>
+<TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Courses Enrolled"
         android:id="@+id/textView_courseEnrolled"
-        android:layout_marginTop="26dp"
-        android:layout_below="@+id/textView_skill"
-        android:layout_alignLeft="@+id/textView_skill"
-        android:layout_alignStart="@+id/textView_skill" />
+        android:layout_marginLeft="43dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="22dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/text_courseEnrolled"
-        android:layout_alignTop="@+id/textView_courseEnrolled"
-        android:layout_alignRight="@+id/text_skills"
-        android:layout_alignEnd="@+id/text_skills" />
-
+        android:layout_weight="1"
+        android:layout_marginTop="42dp"
+        android:id="@+id/text_courseEnrolled" />
+</TableRow>
+<TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Courses Offering"
         android:id="@+id/textView_courseOffering"
-        android:layout_marginTop="26dp"
-        android:layout_below="@+id/textView_courseEnrolled"
-        android:layout_alignLeft="@+id/textView_courseEnrolled"
-        android:layout_alignStart="@+id/textView_courseEnrolled" />
+        android:layout_marginLeft="43dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="22dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/text_courseOffering"
-        android:layout_alignBaseline="@+id/textView_courseOffering"
-        android:layout_alignBottom="@+id/textView_courseOffering"
-        android:layout_alignLeft="@+id/text_courseEnrolled"
-        android:layout_alignStart="@+id/text_courseEnrolled" />
-
+        android:layout_weight="1"
+        android:layout_marginTop="42dp"
+        android:id="@+id/text_courseOffering" />
+</TableRow>
+  <TableRow></TableRow>
+<TableRow>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit Profile"
         android:id="@+id/button_editprofile"
-        android:width="125dp"
-        android:layout_alignTop="@+id/button_proceed"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="65dp"
+        android:layout_marginLeft="50dp"
+        android:width="125dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Proceed"
         android:id="@+id/button_proceed"
-        android:layout_marginTop="67dp"
-        android:width="125dp"
-        android:layout_below="@+id/text_courseOffering"
-        android:layout_toRightOf="@+id/textView_courseOffering"
-        android:layout_toEndOf="@+id/textView_courseOffering" />
-</RelativeLayout>
-<!--
-</ScrollView>-->
+        android:layout_marginTop="65dp"
+        android:layout_marginLeft="40dp"
+        android:width="125dp" />
+</TableRow>
+</TableLayout>
+</ScrollView>
