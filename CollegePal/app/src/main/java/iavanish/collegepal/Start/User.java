@@ -13,7 +13,6 @@ import java.util.Vector;
 
 public class User {
 
-
     private String id;
 
     private String emailId;

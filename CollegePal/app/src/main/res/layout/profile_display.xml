@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:text="Email ID"
         android:id="@+id/textView_courseID"
-        android:layout_marginLeft="43dp"
-        android:layout_marginStart="43dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="22dp" />
 
     <TextView
@@ -30,8 +30,8 @@
         android:layout_height="wrap_content"
         android:text="Name"
         android:id="@+id/textView_name"
-        android:layout_marginLeft="43dp"
-        android:layout_marginStart="43dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="22dp"/>
 
     <TextView
@@ -47,8 +47,8 @@
         android:layout_height="wrap_content"
         android:text="Course"
         android:id="@+id/textView_course"
-        android:layout_marginLeft="43dp"
-        android:layout_marginStart="43dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="22dp" />
 
     <TextView
@@ -65,8 +65,8 @@
         android:layout_height="wrap_content"
         android:text="Branch"
         android:id="@+id/textView_branch"
-        android:layout_marginLeft="43dp"
-        android:layout_marginStart="43dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="22dp" />
 
     <TextView
@@ -83,8 +83,8 @@
         android:layout_height="wrap_content"
         android:text="Institution"
         android:id="@+id/textView_institution"
-        android:layout_marginLeft="43dp"
-        android:layout_marginStart="43dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="22dp" />
 
     <TextView
@@ -101,8 +101,8 @@
         android:layout_height="wrap_content"
         android:text="Skills"
         android:id="@+id/textView_skill"
-        android:layout_marginLeft="43dp"
-        android:layout_marginStart="43dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="22dp" />
 
     <TextView
@@ -118,8 +118,8 @@
         android:layout_height="wrap_content"
         android:text="Courses Enrolled"
         android:id="@+id/textView_courseEnrolled"
-        android:layout_marginLeft="43dp"
-        android:layout_marginStart="43dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="22dp"/>
 
     <TextView
@@ -135,8 +135,8 @@
         android:layout_height="wrap_content"
         android:text="Courses Offering"
         android:id="@+id/textView_courseOffering"
-        android:layout_marginLeft="43dp"
-        android:layout_marginStart="43dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="22dp" />
 
     <TextView

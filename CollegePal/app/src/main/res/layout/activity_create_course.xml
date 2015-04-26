@@ -16,8 +16,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Course ID"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:id="@+id/textView_courseId" />
 
@@ -37,8 +37,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Course Name"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:id="@+id/textView_courseName" />
 
@@ -58,8 +58,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Admin"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:id="@+id/textView_admin"/>
     <EditText
@@ -78,8 +78,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Overview"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:id="@+id/textView_overview" />
 
@@ -100,8 +100,8 @@
         android:layout_height="wrap_content"
         android:text="Institution"
         android:id="@+id/textView_institution"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"/>
 
     <Spinner
@@ -123,8 +123,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pre-Requisites"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:id="@+id/textView_prerequisites" />
 
@@ -146,8 +146,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Post Conditions"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:id="@+id/textView_postConditions" />
 
@@ -167,8 +167,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Instructors"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:id="@+id/textView_instructors" />
 
@@ -191,8 +191,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Course TAs"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:id="@+id/textView_ta" />
 
@@ -203,7 +203,7 @@
         android:text="Select TAs"
         android:layout_weight="1"
         android:layout_marginLeft="10dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginStart="10dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="15dp"
         android:spinnerMode="dropdown"/>

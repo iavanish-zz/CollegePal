@@ -60,10 +60,6 @@ public class DisplayProfile extends Activity {
             _courseEnrolled = b.getString("CourseEnrolled");
             _courseOffering = b.getString("CourseOffering");
 
-            _skills = _skills.replace(',', '\n');
-            _courseEnrolled = _courseEnrolled.replace(',', '\n');
-            _courseOffering = _courseOffering.replace(',', '\n');
-
             txt_emailID.setText(_emailID);
             txt_name.setText(_name);
             txt_course.setText(_course);

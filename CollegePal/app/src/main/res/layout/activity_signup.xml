@@ -16,8 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email ID"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="17dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:id="@+id/text_emailID" />
         <EditText
@@ -36,8 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="17dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:id="@+id/text_name"/>
 
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Course"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginStart="17dp"
             android:layout_marginTop="15dp"
             android:id="@+id/text_course" />
@@ -80,8 +80,8 @@
             android:layout_height="wrap_content"
             android:text="Branch"
             android:id="@+id/text_branch"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="17dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"/>
         <Spinner
             android:layout_width="wrap_content"
@@ -101,8 +101,8 @@
             android:layout_height="wrap_content"
             android:text="Institution"
             android:id="@+id/text_institution"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="17dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"/>
         <Spinner
             android:layout_width="wrap_content"
@@ -122,8 +122,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Skills"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="17dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:id="@+id/text_skills" />
 
@@ -144,9 +144,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Course Enrolled"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="17dp"
+            android:text="Course \nEnrolled"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:id="@+id/text_courseOffered" />
 
@@ -166,9 +166,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Course Offering"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="17dp"
+            android:text="Course \nOffering"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:id="@+id/text_courseOffering" />
 
@@ -195,7 +195,7 @@
             android:layout_height="wrap_content"
             android:text="Register"
             android:id="@+id/button_register"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="30dp"
             android:width="120dp"
             />
@@ -205,7 +205,7 @@
         android:layout_height="wrap_content"
         android:text="Clear"
         android:id="@+id/button_clear"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp" />
 </TableRow>

@@ -13,8 +13,6 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,15 +20,15 @@
         <activity
             android:name=".Start.SignUp"
             android:label="@string/app_name" >
-        </activity>
-        <activity
-            android:name=".Start.CreateProfile"
-            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Start.CreateProfile"
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".Start.DisplayProfile"
@@ -48,6 +46,14 @@
         <activity
             android:name=".Courses.DisplayCourse"
             android:label="@string/title_activity_display_course" >
+        </activity>
+        <activity
+            android:name=".Start.StudentDashboard"
+            android:label="@string/title_activity_student_dashboard" >
+        </activity>
+        <activity
+            android:name=".Courses.CourseActivity"
+            android:label="@string/title_activity_course" >
         </activity>
     </application>
 
