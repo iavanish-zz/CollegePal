@@ -1,8 +1,10 @@
-package iavanish.collegepal.Start;
+package himanshu.user.repository;
 
-import com.google.common.base.Objects;
 
 import java.util.Vector;
+import org.springframework.data.annotation.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.common.base.Objects;
 
 /**
  *Class to represent a user in DB
@@ -13,7 +15,8 @@ import java.util.Vector;
 
 public class User {
 
-    private String id;
+	@Id
+	private String id;
 
     private String emailId;
     private String name;

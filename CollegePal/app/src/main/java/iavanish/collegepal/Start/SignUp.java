@@ -400,8 +400,8 @@ public class SignUp extends FragmentActivity implements
 
         protected void onPostExecute(Bitmap result) {
             bmImage.setImageBitmap(result);
-            UserTask tsk = new UserTask();
-            tsk.execute();
+            /*UserTask tsk = new UserTask();
+            tsk.execute();*/
 
         }
     }

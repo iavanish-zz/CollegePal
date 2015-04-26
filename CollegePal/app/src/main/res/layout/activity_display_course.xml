@@ -13,15 +13,15 @@
             android:layout_height="wrap_content"
             android:text="CourseID"
             android:id="@+id/textView_courseID"
-            android:layout_marginLeft="43dp"
-            android:layout_marginStart="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="22dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/text_courseID"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="42dp"
             android:layout_alignTop="@+id/textView_courseID"
             android:layout_centerHorizontal="true" />
     </TableRow>
@@ -31,15 +31,15 @@
             android:layout_height="wrap_content"
             android:text="Course Name"
             android:id="@+id/textView_courseName"
-            android:layout_marginLeft="43dp"
-            android:layout_marginStart="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="22dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/text_courseName"
-            android:layout_marginTop="22dp" />
+            android:layout_marginTop="42dp" />
     </TableRow>
     <TableRow>
         <TextView
@@ -47,15 +47,15 @@
             android:layout_height="wrap_content"
             android:text="Admin"
             android:id="@+id/textView_admin"
-            android:layout_marginLeft="43dp"
-            android:layout_marginStart="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="22dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/text_admin"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="42dp"
             android:layout_centerHorizontal="true" />
     </TableRow>
     <TableRow>
@@ -64,15 +64,15 @@
             android:layout_height="wrap_content"
             android:text="Overview"
             android:id="@+id/textView_overview"
-            android:layout_marginLeft="43dp"
-            android:layout_marginStart="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="22dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/text_overview"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="42dp"
             android:layout_centerHorizontal="true" />
     </TableRow>
     <TableRow>
@@ -81,15 +81,15 @@
             android:layout_height="wrap_content"
             android:text="Institution"
             android:id="@+id/textView_institution"
-            android:layout_marginLeft="43dp"
-            android:layout_marginStart="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="22dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/text_institution"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="42dp"
             android:layout_centerHorizontal="true" />
     </TableRow>
     <TableRow>
@@ -98,14 +98,14 @@
             android:layout_height="wrap_content"
             android:text="Pre-Requisites"
             android:id="@+id/textView_preRequisites"
-            android:layout_marginLeft="43dp"
-            android:layout_marginStart="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="22dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="42dp"
             android:id="@+id/text_preRequisites"/>
     </TableRow>
     <TableRow>
@@ -114,14 +114,14 @@
             android:layout_height="wrap_content"
             android:text="post Conditions"
             android:id="@+id/textView_postConditions"
-            android:layout_marginLeft="43dp"
-            android:layout_marginStart="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="22dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="42dp"
             android:id="@+id/text_postConditions" />
     </TableRow>
     <TableRow>
@@ -130,14 +130,14 @@
             android:layout_height="wrap_content"
             android:text="Instructors"
             android:id="@+id/textView_instructors"
-            android:layout_marginLeft="43dp"
-            android:layout_marginStart="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="22dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="42dp"
             android:id="@+id/text_instructors" />
     </TableRow>
     <TableRow>
@@ -146,14 +146,14 @@
             android:layout_height="wrap_content"
             android:text="Course TA"
             android:id="@+id/textView_courseTA"
-            android:layout_marginLeft="43dp"
-            android:layout_marginStart="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="22dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="42dp"
             android:id="@+id/text_courseTA" />
     </TableRow>
     <TableRow></TableRow>
@@ -163,7 +163,7 @@
             android:layout_height="wrap_content"
             android:text="Edit Profile"
             android:id="@+id/button_editprofile"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="35dp"
             android:layout_marginLeft="50dp"
             android:width="125dp" />
 
@@ -172,7 +172,7 @@
             android:layout_height="wrap_content"
             android:text="Proceed"
             android:id="@+id/button_proceed"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="35dp"
             android:layout_marginLeft="40dp"
             android:width="125dp" />
     </TableRow>

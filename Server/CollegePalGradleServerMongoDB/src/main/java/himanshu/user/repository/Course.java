@@ -1,14 +1,21 @@
-package iavanish.collegepal.Courses;
-
-import com.google.common.base.Objects;
+package himanshu.user.repository;
 
 import java.util.Vector;
 
-/**
- * Created by Himanshu on 4/18/2015.
- */
-public class Course {
+import org.springframework.data.annotation.Id;
 
+import com.google.common.base.Objects;
+
+/**
+*
+*@author himanshu
+*/
+
+
+
+public class Course {
+	
+	@Id
     private String id;
 
     private String courseId;
@@ -145,4 +152,14 @@ public class Course {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
 

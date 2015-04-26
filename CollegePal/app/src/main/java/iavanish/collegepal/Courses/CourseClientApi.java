@@ -12,13 +12,13 @@ import retrofit.http.Query;
  * Created by Himanshu on 4/18/2015.
  */
 public interface CourseClientApi {
+
     @GET("/course")
-    public Collection<Course> getDiscussionList();
+    public Collection<Course> getCourseList();
 
     @POST("/course")
     public Boolean addCourse(@Body Course course);
 
-    @GET("/user/search/findByCourseId")
-    public Collection<Course> findByCourseId(@Query("courseid") String courseId);
-
+    @GET("/course/search/findByfindByCourseIdIgnoreCase")
+    public Collection<Course> findByCourseIdIgnoreCase(@Query("courseid") String courseId);
 }
