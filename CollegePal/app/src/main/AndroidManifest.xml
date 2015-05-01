@@ -13,6 +13,13 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
+    <android:uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -82,13 +89,10 @@
             android:name=".Courses.CourseDashBoard"
             android:label="@string/title_activity_course_dash_board" >
         </activity>
-
-        <!--
         <activity
             android:name=".Calendar.CalendarActivity"
             android:label="@string/title_activity_calendar" >
         </activity>
-        -->
         <activity
             android:name=".Courses.CourseDashBoardView"
             android:label="@string/title_activity_course_dash_board_view" >
@@ -100,6 +104,10 @@
         <activity
             android:name=".Deadlines.AddDeadline"
             android:label="@string/title_activity_add_deadline" >
+        </activity>
+        <activity
+            android:name=".Calendar.ShowDetailsOfDate"
+            android:label="@string/title_activity_show_details_of_date" >
         </activity>
     </application>
 

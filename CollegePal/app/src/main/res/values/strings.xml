@@ -34,6 +34,7 @@
     <string name="title_activity_course_dash_board_view">CourseDashBoardView</string>
     <string name="title_activity_deadline">DeadlineActivity</string>
     <string name="title_activity_add_deadline">AddDeadline</string>
+    <string name="title_activity_show_details_of_date">ShowDetailsOfDate</string>
 
 
 </resources>

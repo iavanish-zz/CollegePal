@@ -16,12 +16,12 @@ import iavanish.collegepal.CommonClasses.Date;
 public class ShowPublicDeadlines extends ShowDetailsOfDate {
     
     public ShowPublicDeadlines(Date date) {
-        super(date);
+        //super(date);
     }
     
-    @Override
+
     protected void showPrivateDeadLines() {
-        super.showPrivateDeadLines();
+        //super.showPrivateDeadLines();
     }
     
 }

@@ -17,12 +17,12 @@ import iavanish.collegepal.CommonClasses.Date;
 public class ShowSuggestedActivities extends ShowDetailsOfDate {
     
     public ShowSuggestedActivities(Date date) {
-        super(date);
+        //super(date);
     }
     
-    @Override
+
     protected void showSuggestedActivities() {
-        super.showSuggestedActivities();
+        //super.showSuggestedActivities();
     }
     
 }

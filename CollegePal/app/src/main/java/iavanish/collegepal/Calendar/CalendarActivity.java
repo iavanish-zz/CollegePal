@@ -418,10 +418,16 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
             String date_month_year = (String) view.getTag();
             selectedDayMonthYearButton.setText("Selected: " + date_month_year);
             Log.e("Selected date", date_month_year);
+
+            Bundle b = new Bundle();
+            b.putString("Email", email);
+            Intent intent = new Intent(view.getContext(), ShowDetailsOfDate.class);
+            intent.putExtras(b);
+            startActivity(intent);
+
             try {
                 Date parsedDate = dateFormatter.parse(date_month_year);
                 Log.d(tag, "Parsed Date: " + parsedDate.toString());
-
             } catch (ParseException e) {
                 e.printStackTrace();
             }
