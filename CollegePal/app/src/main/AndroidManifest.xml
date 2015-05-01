@@ -92,6 +92,10 @@
             android:name=".Courses.CourseDashBoard"
             android:label="@string/title_activity_course_dash_board" >
         </activity>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7ec512f87dec40dbbac8cbdff0f5ec6fbea11f0a
         <activity
             android:name=".Calendar.CalendarActivity"
             android:label="@string/title_activity_calendar" >

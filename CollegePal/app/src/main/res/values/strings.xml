@@ -27,10 +27,17 @@
     <string name="title_activity_enroll_course">EnrollCourse</string>
     <string name="title_activity_update_own_course">UpdateOwnCourse</string>
     <string name="title_activity_course_dash_board">CourseDashBoard</string>
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> 7ec512f87dec40dbbac8cbdff0f5ec6fbea11f0a
     <string name="title_activity_calendar">CalendarActivity</string>
 
     <string name="hello">Hello World, SimpleCalendar!</string>
 
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> 7ec512f87dec40dbbac8cbdff0f5ec6fbea11f0a
 </resources>

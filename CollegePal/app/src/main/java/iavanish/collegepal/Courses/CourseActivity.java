@@ -58,6 +58,8 @@ public class CourseActivity extends Activity {
             @Override
             public void onClick(View v) {
 
+
+
                 //Course Dashboard Class
             }
         });

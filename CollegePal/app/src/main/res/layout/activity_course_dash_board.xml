@@ -45,14 +45,14 @@ tools:context="iavanish.collegepal.Courses.Start.Courses.CourseDashBoard">
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Select Offered Course"
-                android:id="@+id/textView_offeredCourse"
+                android:id="@+id/textView_offeringCourse"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="20dp"
                 android:width="200dp" />
         </TableRow>
         <TableRow android:gravity="center_horizontal">
             <Spinner
-                android:id="@+id/spinner_courseOffered"
+                android:id="@+id/spinner_courseOffering"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Select Course"
