@@ -12,25 +12,32 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.common.collect.Iterables;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Vector;
 
 import iavanish.collegepal.R;
 import iavanish.collegepal.Start.CreateProfile;
+import iavanish.collegepal.Start.User;
+import iavanish.collegepal.Start.UserClientApi;
 import retrofit.RestAdapter;
 
 public class CourseActivity extends Activity {
 
     private final String URL = "http://192.168.55.74:8080";
     String str_search;
-    Collection<Course> searchName, searchPreRequisites, searchInstructors, searchAdmin,searchCourse;
+    Collection<Course> searchName, searchPreRequisites, searchInstructors, searchAdmin, searchCourse;
     private CourseClientApi courseServiceSearch = new RestAdapter.Builder()
             .setEndpoint(URL).setLogLevel(RestAdapter.LogLevel.FULL).build()
             .create(CourseClientApi.class);
-
+    private UserClientApi userService = new RestAdapter.Builder()
+            .setEndpoint(URL).setLogLevel(RestAdapter.LogLevel.FULL).build()
+            .create(UserClientApi.class);
     private Button mCourseDashboardButton,mEnrollCourseButton,mRegisterCourseButton,mUpdateCourseButton,mOwnCourseButton,mAllCourseButton,mSelectCourseButton;
     private EditText txtPreferences,txtCourseId;
     private TextView txtPreferencesResult,txtOwnCourseResult,txtAllCourseResult;
@@ -38,6 +45,12 @@ public class CourseActivity extends Activity {
 
     private ArrayList<Course> mListCourse = new ArrayList<Course>();
     private ArrayList<String> courseList = new ArrayList <String>();
+    private ArrayList<String> tempCourseListOffering = new ArrayList<String>();
+    private ArrayList<String> tempCourseListEnrolled = new ArrayList<String>();
+    private ArrayList<String> courseListEnrolled;
+    private ArrayList<String> courseListOffering;
+    Collection<User> user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +70,10 @@ public class CourseActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-
+                      /*courseListEnrolled.clear();
+                      courseListOffering.clear();*/
+                      CourseEnrollmentTask tsk = new CourseEnrollmentTask();
+                      tsk.execute();
 
 
                 //Course Dashboard Class
@@ -182,8 +198,9 @@ public class CourseActivity extends Activity {
             searchPreRequisites = courseServiceSearch.findByPreRequisitesContainingIgnoreCase(txtPreferences.getText().toString());
             searchName = courseServiceSearch.findByCourseNameContainingIgnoreCase(txtPreferences.getText().toString());
             searchInstructors = courseServiceSearch.findByInstructorsContainingIgnoreCase(txtPreferences.getText().toString());
+            searchCourse=courseServiceSearch.findByCourseIdIgnoreCase(txtPreferences.getText().toString());
 
-            if (searchPreRequisites.isEmpty() && searchName.isEmpty() && searchInstructors.isEmpty()) {
+            if (searchPreRequisites.isEmpty() && searchName.isEmpty() && searchInstructors.isEmpty() && searchCourse.isEmpty()) {
                 return false;
             } else {
 
@@ -200,6 +217,12 @@ public class CourseActivity extends Activity {
 
 
                 }
+                if(!searchCourse.isEmpty()){
+                    if(!mListCourse.containsAll(searchCourse))
+                        mListCourse.addAll(searchCourse);
+                }
+
+
                 if (!searchName.isEmpty()) {
 
                     if (!mListCourse.containsAll(searchName))
@@ -370,7 +393,6 @@ public class CourseActivity extends Activity {
             if (searchCourse.isEmpty()) {
                 return false;
             } else {
-
                 return true;
             }
         }
@@ -455,6 +477,61 @@ public class CourseActivity extends Activity {
                 Toast.makeText(getApplicationContext(), "No records found!", Toast.LENGTH_LONG).show();
 
             System.out.print("Search Profile");
+        }
+    }
+    private class CourseEnrollmentTask extends AsyncTask<String, Void, Boolean>
+    {
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            Boolean ok;
+            User tempUser;
+            user = userService.findByEmailIdIgnoreCase(_admin);
+            if (!user.isEmpty()) {
+
+                tempUser = Iterables.getFirst(user, null);
+                courseListEnrolled = new ArrayList <String>(tempUser.getCourseEnrolled());
+
+                int index = 1 ;
+                while (courseListEnrolled.size()> index) {
+                            tempCourseListEnrolled.add(courseListEnrolled.get(index));
+                            index++ ;
+                }
+
+                courseListOffering = new ArrayList <String>(tempUser.getCoursesOffering());
+
+                 int position = 1 ;
+                 while (courseListOffering.size()> position) {
+                        tempCourseListOffering.add(courseListOffering.get(position));
+                         position++ ;
+                 }
+               /* courseListEnrolled.addAll(tempUser.getCourseEnrolled());
+               courseListOffering.addAll(tempUser.getCoursesOffering());*/
+
+                return true;
+            }
+            else
+                return false;
+        }
+        @Override
+        protected void onPostExecute(Boolean b)
+        {
+
+            //if(b)
+
+            Toast.makeText(getApplicationContext(), "Jai mata Di Done", Toast.LENGTH_LONG).show();
+            Bundle bundle = new Bundle();
+            bundle.putString("Email", _admin);
+
+            Intent intent = new Intent(getApplicationContext(), CourseDashBoard.class);
+            intent.putStringArrayListExtra("course_list_Enrolled", tempCourseListEnrolled);
+            intent.putStringArrayListExtra("course_list_Offering", tempCourseListOffering);
+            intent.putExtras(bundle);
+
+            startActivity(intent);
+            onBackPressed();
+
+            System.out.println("course list done");
         }
     }
 }

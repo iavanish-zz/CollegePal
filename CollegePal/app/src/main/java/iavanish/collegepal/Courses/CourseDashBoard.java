@@ -38,8 +38,8 @@ public class CourseDashBoard extends Activity implements AdapterView.OnItemSelec
     Collection<Course> course;
     Collection<User> user;
     private ArrayList<Course> mListCourse = new ArrayList<Course>();
-    private List<String> courseListEnrolled = new ArrayList <String>();
-    private List<String> courseListOffering = new ArrayList <String>();
+    private ArrayList<String> courseListEnrolled = new ArrayList <String>();
+    private ArrayList<String> courseListOffering = new ArrayList <String>();
     Collection<Course> searchCourse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,19 +47,15 @@ public class CourseDashBoard extends Activity implements AdapterView.OnItemSelec
         setContentView(R.layout.activity_course_dash_board);
         findAllViewsId();
         Intent in = getIntent();
-        courseListEnrolled = in.getStringArrayListExtra("course_list_enrolled");
-        courseListOffering = in.getStringArrayListExtra("course_list_offered");
+        courseListEnrolled = in.getStringArrayListExtra("course_list_Enrolled");
+        courseListOffering = in.getStringArrayListExtra("course_list_Offering");
         Bundle b = in.getExtras();
         if(b!=null) {
             _admin = b.getString("Email");
         }
         spinnerCourseEnrolled.setOnItemSelectedListener(this);
-        ArrayAdapter<String> dataAdapter_courseEnrolled= new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, courseListEnrolled);
-
-
+        ArrayAdapter <String> dataAdapter_courseEnrolled= new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, courseListEnrolled);
         dataAdapter_courseEnrolled.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-
-
         spinnerCourseEnrolled.setPrompt("Select Course");
         spinnerCourseEnrolled.setAdapter(
                 new NothingSelectedSpinnerAdapter(
@@ -67,39 +63,13 @@ public class CourseDashBoard extends Activity implements AdapterView.OnItemSelec
                         R.layout.spinner_row_nothing_selected,
                         this));
 
-        /*spinnerCourseEnrolled.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                System.out.println("Selected Course name" + _courseName);
-                switch (parent.getId()) {
-                    case R.id.spinner_course:
-                        if (parent.getItemAtPosition(position) != null) {
-                            _courseName = parent.getItemAtPosition(position).toString();
-                            System.out.println("Selected Course name" + _courseName);
-
-                        }
-                        break;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-*/
         spinnerCourseOffering.setOnItemSelectedListener(this);
-        ArrayAdapter<String> dataAdapter_courseOffered= new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, courseListOffering);
-
-
-        dataAdapter_courseOffered.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-
-
+        ArrayAdapter <String> dataAdapter_courseOffering= new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, courseListOffering);
+        dataAdapter_courseOffering.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         spinnerCourseOffering.setPrompt("Select Course");
         spinnerCourseOffering.setAdapter(
                 new NothingSelectedSpinnerAdapter(
-                        dataAdapter_courseOffered,
+                        dataAdapter_courseOffering,
                         R.layout.spinner_row_nothing_selected,
                         this));
 
@@ -112,6 +82,15 @@ public class CourseDashBoard extends Activity implements AdapterView.OnItemSelec
                     Toast.makeText(getApplicationContext(), "Choose the course correctly", Toast.LENGTH_SHORT).show();
                 } else {
 
+                    Bundle bundle = new Bundle();
+                    bundle.putString("Email", _admin);
+                    bundle.putString("CourseName", _courseName);
+                    Intent intent = new Intent(getApplicationContext(), CourseDashBoardView.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+
+                    Toast.makeText(getApplicationContext(), "Jai Mata Di done", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
@@ -120,7 +99,6 @@ public class CourseDashBoard extends Activity implements AdapterView.OnItemSelec
     }
 
     private void findAllViewsId() {
-
 
         spinnerCourseEnrolled = (Spinner) findViewById(R.id.spinner_courseEnrolled);
         spinnerCourseOffering = (Spinner) findViewById(R.id.spinner_courseOffering);

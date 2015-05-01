@@ -83,9 +83,23 @@
             android:label="@string/title_activity_course_dash_board" >
         </activity>
 
+        <!--
         <activity
             android:name=".Calendar.CalendarActivity"
             android:label="@string/title_activity_calendar" >
+        </activity>
+        -->
+        <activity
+            android:name=".Courses.CourseDashBoardView"
+            android:label="@string/title_activity_course_dash_board_view" >
+        </activity>
+        <activity
+            android:name=".Deadlines.DeadlineActivity"
+            android:label="@string/title_activity_deadline" >
+        </activity>
+        <activity
+            android:name=".Deadlines.AddDeadline"
+            android:label="@string/title_activity_add_deadline" >
         </activity>
     </application>
 
