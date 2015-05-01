@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+android:paddingRight="@dimen/activity_horizontal_margin"
+android:paddingTop="@dimen/activity_vertical_margin"
+android:paddingBottom="@dimen/activity_vertical_margin"
+tools:context="iavanish.collegepal.Courses.Start.Courses.CourseDashBoard">
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView04"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context="iavanish.collegepal.Start.StudentDashboard">
+        <TableRow android:gravity="center_horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Enrolled Course"
+                android:id="@+id/textView_enrolledCourse"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:width="200dp" />
+        </TableRow>
+        <TableRow android:gravity="center_horizontal">
+            <Spinner
+                android:id="@+id/spinner_courseEnrolled"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Course"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:width="200dp"
+                android:spinnerMode="dropdown"
+                android:prompt="@string/spinner_course" />
+        </TableRow>
+        <TableRow android:gravity="center_horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Offered Course"
+                android:id="@+id/textView_offeringCourse"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:width="200dp" />
+        </TableRow>
+        <TableRow android:gravity="center_horizontal">
+            <Spinner
+                android:id="@+id/spinner_courseOffering"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Course"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:width="200dp"
+                android:spinnerMode="dropdown"
+                android:prompt="@string/spinner_course" />
+        </TableRow>
+        <TableRow android:gravity="center_horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View Course Details"
+                android:id="@+id/button_viewCourseDetails"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:width="200dp" />
+        </TableRow>
+
+    </TableLayout>
+</ScrollView>
+</LinearLayout>

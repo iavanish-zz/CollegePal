@@ -13,13 +13,6 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
-    <android:uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -36,11 +29,13 @@
         </activity>
         <activity
             android:name=".Start.CreateProfile"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
             android:name=".Start.DisplayProfile"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
 
         <meta-data
@@ -49,24 +44,50 @@
 
         <activity
             android:name=".Courses.CreateCourse"
-            android:label="@string/title_activity_create_course" >
+            android:label="@string/title_activity_create_course"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
             android:name=".Courses.DisplayCourse"
-            android:label="@string/title_activity_display_course" >
+            android:label="@string/title_activity_display_course"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
             android:name=".Start.StudentDashboard"
-            android:label="@string/title_activity_student_dashboard" >
+            android:label="@string/title_activity_student_dashboard"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
             android:name=".Courses.CourseActivity"
-            android:label="@string/title_activity_course" >
+            android:label="@string/title_activity_course"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
+        <activity
+            android:name=".Courses.UpdateCourse"
+            android:label="@string/title_activity_update_course" >
+        </activity>
+        <activity
+            android:name=".Start.EditProfile"
+            android:label="@string/title_activity_edit_profile" >
+        </activity>
+        <activity
+            android:name=".Courses.EnrollCourse"
+            android:label="@string/title_activity_enroll_course" >
+        </activity>
+        <activity
+            android:name=".Courses.UpdateOwnCourse"
+            android:label="@string/title_activity_update_own_course" >
+        </activity>
+        <activity
+            android:name=".Courses.CourseDashBoard"
+            android:label="@string/title_activity_course_dash_board" >
+        </activity>
+
         <activity
             android:name=".Calendar.CalendarActivity"
             android:label="@string/title_activity_calendar" >
         </activity>
+
     </application>
 
 </manifest>

@@ -29,8 +29,8 @@ public class TestDataUser {
 		
 		Vector<String> courseOffering = new Vector<String>();
 		courseOffering.add("Smart Coding");
-		return new User("112e45a1-c3bc-49c6-9b0c-8abafedaa3de","himanshuvar@gmail.com",
-				"himanshu varshney","MTech Ist year","CSE","IIIT Delhi",skills,courseEnrolled,courseOffering) ;
+		return new User("112e45b1-c3bc-49c6-9b0c-8abafedaa3de","112e45b1-c3bc-49c6-9b0c-8abafedaa3de","avanishsingh@gmail.com",
+				"avanish singh","MTech Ist year","CSE","IIIT Delhi",skills,courseEnrolled,courseOffering) ;
 	}
 	
 	

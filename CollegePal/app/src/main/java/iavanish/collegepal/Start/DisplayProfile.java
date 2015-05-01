@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.Vector;
 
+import iavanish.collegepal.Courses.CreateCourse;
 import iavanish.collegepal.R;
 import retrofit.RestAdapter;
 
@@ -36,17 +37,8 @@ public class DisplayProfile extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_display);
+        findAllViewsId();
 
-        txt_emailID = (TextView)findViewById(R.id.text_emailID);
-        txt_name = (TextView)findViewById(R.id.text_name);
-        txt_course = (TextView)findViewById(R.id.text_course);
-        txt_branch = (TextView)findViewById(R.id.text_branch);
-        txt_institution = (TextView)findViewById(R.id.text_institution);
-        txt_skills = (TextView)findViewById(R.id.text_skills);
-        txt_courseEnrolled = (TextView)findViewById(R.id.text_courseEnrolled);
-        txt_courseOffering = (TextView)findViewById(R.id.text_courseOffering);
-        button_editprofile =(Button) findViewById(R.id.button_editprofile);
-        button_proceed =(Button) findViewById(R.id.button_proceed);
 
         Intent in = getIntent();
         Bundle b = in.getExtras();
@@ -57,8 +49,8 @@ public class DisplayProfile extends Activity {
             _branch = b.getString("Branch");
             _institution = b.getString("Institution");
             _skills = b.getString("Skills");
-            _courseEnrolled = b.getString("CourseEnrolled");
-            _courseOffering = b.getString("CourseOffering");
+           /* _courseEnrolled = b.getString("CourseEnrolled");
+            _courseOffering = b.getString("CourseOffering");*/
 
             txt_emailID.setText(_emailID);
             txt_name.setText(_name);
@@ -66,8 +58,8 @@ public class DisplayProfile extends Activity {
             txt_branch.setText(_branch);
             txt_institution.setText(_institution);
             txt_skills.setText(_skills);
-            txt_courseEnrolled.setText(_courseEnrolled);
-            txt_courseOffering.setText(_courseOffering);
+           /* txt_courseEnrolled.setText(_courseEnrolled);
+            txt_courseOffering.setText(_courseOffering);*/
         }
         button_proceed.setOnClickListener(new View.OnClickListener() {
 
@@ -77,16 +69,22 @@ public class DisplayProfile extends Activity {
                 List<String> skills_list = Arrays.asList(_skills.split("\\s*,\\s*"));
                 skills.addAll(skills_list);
 
-                Vector<String> coursesEnrolled=new Vector<String>();
+               /* Vector<String> coursesEnrolled=new Vector<String>();
                 List<String> coursesEnrolled_list = Arrays.asList(_courseEnrolled.split("\\s*,\\s*"));
                 coursesEnrolled.addAll(coursesEnrolled_list);
 
                 Vector<String> coursesOffering=new Vector<String>();
                 List<String> coursesOffering_list = Arrays.asList(_courseOffering.split("\\s*,\\s*"));
-                coursesOffering.addAll(coursesOffering_list);
+                coursesOffering.addAll(coursesOffering_list);*/
+
+                Vector<String> coursesEnrolled=new Vector<String>();
+                coursesEnrolled.add("");
+
+                Vector<String> coursesOffering=new Vector<String>();
+                coursesOffering.add("");
 
                 String id = UUID.randomUUID().toString();
-                user=new User(id,_emailID,
+                user=new User(id,id,_emailID,
                         _name,_course,_branch,
                         _institution,
                         skills,
@@ -106,9 +104,20 @@ public class DisplayProfile extends Activity {
 
             }
         });
-
     }
-    private class UserTask extends AsyncTask<String, Void, Boolean>
+    private void findAllViewsId() {
+        txt_emailID = (TextView)findViewById(R.id.text_emailID);
+        txt_name = (TextView)findViewById(R.id.text_name);
+        txt_course = (TextView)findViewById(R.id.text_course);
+        txt_branch = (TextView)findViewById(R.id.text_branch);
+        txt_institution = (TextView)findViewById(R.id.text_institution);
+        txt_skills = (TextView)findViewById(R.id.text_skills);
+        txt_courseEnrolled = (TextView)findViewById(R.id.text_courseEnrolled);
+        txt_courseOffering = (TextView)findViewById(R.id.text_courseOffering);
+        button_editprofile =(Button) findViewById(R.id.button_editprofile);
+        button_proceed =(Button) findViewById(R.id.button_proceed);
+    }
+        private class UserTask extends AsyncTask<String, Void, Boolean>
     {
 
         @Override
@@ -122,9 +131,16 @@ public class DisplayProfile extends Activity {
         @Override
         protected void onPostExecute(Boolean b)
         {
-            if(b)
+            /*if(b)*/
                 Toast.makeText(getApplicationContext(), "Jai mata Di Done", Toast.LENGTH_LONG).show();
             System.out.print("test");
+            Bundle bundle = new Bundle();
+            bundle.putString("Email", _emailID);
+            Intent intent = new Intent(getApplicationContext(), StudentDashboard.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+            onBackPressed();
+
         }
     }
 }

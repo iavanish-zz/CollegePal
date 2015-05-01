@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -59,6 +60,8 @@ import iavanish.collegepal.R;
 public class CalendarActivity extends Activity implements View.OnClickListener {
     private static final String tag = "CalendarActivity";
 
+    private String email;
+
     private TextView currentMonth;
     private Button selectedDayMonthYearButton;
     private ImageView prevMonth;
@@ -78,6 +81,13 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_calendar_view);
+
+        Intent in = getIntent();
+
+        Bundle b = in.getExtras();
+        if(b!=null) {
+            email = b.getString("Email");
+        }
 
         _calendar = Calendar.getInstance(Locale.getDefault());
         month = _calendar.get(Calendar.MONTH) + 1;

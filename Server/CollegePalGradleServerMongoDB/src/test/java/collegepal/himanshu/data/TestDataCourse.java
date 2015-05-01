@@ -35,8 +35,8 @@ public class TestDataCourse {
 		
 		Vector<String> studentsRegistered = new Vector<String>();
 		studentsRegistered.add("Ashish Bandil");
-		return new Course("199f45a1-c3bc-49c6-9b0c-8abafedaa3de","CSE304","Practice of Programming",
-				"himanshu1449@iiitd.ac.in","Course for basic understanding of design principles and how to code","IIIT Delhi",preRequisites,postConditions,instructors,courseTA,studentsRegistered) ;
+		return new Course("199f45a1-c3bc-49c6-9b0c-8abafedaa3de","199f45a1-c3bc-49c6-9b0c-8abafedaa3de","CSE304","Practice of Programming",
+				"avanishsingh@gmail.com","Course for basic understanding of design principles and how to code","IIIT Delhi",preRequisites,postConditions,instructors,courseTA,studentsRegistered) ;
 	}
 	
 	
