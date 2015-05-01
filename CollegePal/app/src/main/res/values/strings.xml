@@ -31,6 +31,9 @@
     <string name="title_activity_calendar">CalendarActivity</string>
 
     <string name="hello">Hello World, SimpleCalendar!</string>
+    <string name="title_activity_course_dash_board_view">CourseDashBoardView</string>
+    <string name="title_activity_deadline">DeadlineActivity</string>
+    <string name="title_activity_add_deadline">AddDeadline</string>
 
 
 </resources>

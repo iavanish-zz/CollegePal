@@ -22,5 +22,14 @@ public interface DeadlineClientApi {
     @GET("/deadline/search/findByDeadlineIdIgnoreCase")
     public Collection<Deadline> findByDeadlineIdIgnoreCase(@Query("deadlineid") String deadlineId);
 
+    @GET("/deadline/search/findByCourseIdIgnoreCase")
+    public Collection<Deadline> findByCourseIdIgnoreCase(@Query("courseid") String courseId);
+
+    @GET("/deadline/search/findByEmailIdIgnoreCase")
+    public Collection<Deadline> findByEmailIdIgnoreCase(@Query("emailid") String emailId);
+
+    @GET("/deadline/search/findByEmailIdContainingIgnoreCase")
+    public Collection<Deadline> findByEmailIdContainingIgnoreCase(@Query("emailid") String emailid);
+
 
 }
