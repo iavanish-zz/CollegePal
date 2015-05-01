@@ -16,7 +16,7 @@ import iavanish.collegepal.Deadlines.Deadline;
 
 public class UpdateCalendar {
     
-    private Calendar calendar;
+    //private Calendar calendar;
     
     private DataBaseWrite dataBaseWrite;
     
