@@ -2,6 +2,7 @@ package iavanish.collegepal.Courses;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -51,21 +53,21 @@ public class CourseDashBoard extends Activity implements AdapterView.OnItemSelec
         if(b!=null) {
             _admin = b.getString("Email");
         }
+        spinnerCourseEnrolled.setOnItemSelectedListener(this);
+        ArrayAdapter<String> dataAdapter_courseEnrolled= new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, courseListEnrolled);
 
-        ArrayAdapter<String> dataAdapter_course= new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, courseListEnrolled);
 
-
-        dataAdapter_course.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        dataAdapter_courseEnrolled.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
 
         spinnerCourseEnrolled.setPrompt("Select Course");
         spinnerCourseEnrolled.setAdapter(
                 new NothingSelectedSpinnerAdapter(
-                        dataAdapter_course,
+                        dataAdapter_courseEnrolled,
                         R.layout.spinner_row_nothing_selected,
                         this));
 
-        spinnerCourseEnrolled.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        /*spinnerCourseEnrolled.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -84,6 +86,33 @@ public class CourseDashBoard extends Activity implements AdapterView.OnItemSelec
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+*/
+        spinnerCourseOffering.setOnItemSelectedListener(this);
+        ArrayAdapter<String> dataAdapter_courseOffered= new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, courseListOffering);
+
+
+        dataAdapter_courseOffered.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+
+
+        spinnerCourseOffering.setPrompt("Select Course");
+        spinnerCourseOffering.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        dataAdapter_courseOffered,
+                        R.layout.spinner_row_nothing_selected,
+                        this));
+
+
+        mViewCourseButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (_courseName.length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Choose the course correctly", Toast.LENGTH_SHORT).show();
+                } else {
+
+                }
             }
         });
 
@@ -125,6 +154,18 @@ public class CourseDashBoard extends Activity implements AdapterView.OnItemSelec
     public void onNothingSelected(AdapterView<?> parent) {
         // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

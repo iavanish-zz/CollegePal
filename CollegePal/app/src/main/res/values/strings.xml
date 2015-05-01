@@ -26,4 +26,9 @@
     <string name="title_activity_enroll_course">EnrollCourse</string>
     <string name="title_activity_update_own_course">UpdateOwnCourse</string>
     <string name="title_activity_course_dash_board">CourseDashBoard</string>
+
+    <string name="title_activity_calendar">CalendarActivity</string>
+
+    <string name="hello">Hello World, SimpleCalendar!</string>
+
 </resources>
