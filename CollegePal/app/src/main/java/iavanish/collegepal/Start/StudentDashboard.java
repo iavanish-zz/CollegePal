@@ -14,6 +14,7 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.plus.People;
 import com.google.android.gms.plus.Plus;
 
+import iavanish.collegepal.Calendar.CalendarActivity;
 import iavanish.collegepal.Courses.CourseActivity;
 import iavanish.collegepal.Courses.CreateCourse;
 import iavanish.collegepal.R;
@@ -67,6 +68,11 @@ public class StudentDashboard extends Activity implements
             public void onClick(View v) {
 
                 //Calender Activity
+                Bundle b = new Bundle();
+                b.putString("Email", _admin);
+                Intent intent = new Intent(v.getContext(), CalendarActivity.class);
+                intent.putExtras(b);
+                startActivity(intent);
 
             }
         });
