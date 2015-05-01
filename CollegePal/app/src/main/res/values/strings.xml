@@ -21,8 +21,19 @@
     <string name="title_activity_display_course">DisplayCourse</string>
     <string name="title_activity_student_dashboard">StudentDashboard</string>
     <string name="title_activity_course">CourseActivity</string>
+
+    <string name="title_activity_update_course">UpdateCourse</string>
+    <string name="title_activity_edit_profile">EditProfile</string>
+    <string name="title_activity_enroll_course">EnrollCourse</string>
+    <string name="title_activity_update_own_course">UpdateOwnCourse</string>
+    <string name="title_activity_course_dash_board">CourseDashBoard</string>
+
     <string name="title_activity_calendar">CalendarActivity</string>
 
     <string name="hello">Hello World, SimpleCalendar!</string>
+    <string name="title_activity_course_dash_board_view">CourseDashBoardView</string>
+    <string name="title_activity_deadline">DeadlineActivity</string>
+    <string name="title_activity_add_deadline">AddDeadline</string>
+
 
 </resources>

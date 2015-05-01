@@ -16,6 +16,7 @@ public class Deadline {
     private String deadlineDetails;
     private String deadlineType;
     private Boolean isDeadOver;
+
     public Deadline(String id,String deadlineId, String courseId,String emailId, String date, String deadlineDetails, String deadlineType, Boolean isDeadOver) {
         super();
         this.id=id;

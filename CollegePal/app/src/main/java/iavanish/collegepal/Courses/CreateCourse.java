@@ -35,18 +35,7 @@ public class CreateCourse extends Activity implements AdapterView.OnItemSelected
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_course);
 
-        txtCourseId = (EditText) findViewById(R.id.editText_courseId);
-        txtCourseName = (EditText) findViewById(R.id.editText_courseName);
-        txtAdmin = (EditText) findViewById(R.id.editText_admin);
-        txtOverview = (EditText) findViewById(R.id.editText_overview);
-        txtPostConditions = (EditText) findViewById(R.id.editText_postCondition);
-        spinnerInstitution = (Spinner) findViewById(R.id.spinner_institution);
-        spinnerPreRequisites = (MultiSelectionSpinner) findViewById(R.id.spinner_preRequisites);
-        spinnerInstructors = (MultiSelectionSpinner) findViewById(R.id.spinner_instructors);
-        spinnerCourseTA = (MultiSelectionSpinner) findViewById(R.id.spinner_ta);
-        mRegisterCourseButton = (Button) findViewById(R.id.button_registerCourse);
-        mClearButton = (Button) findViewById(R.id.button_clear);
-
+        findAllViewsId();
         Intent in = getIntent();
 
         Bundle b = in.getExtras();
@@ -77,7 +66,6 @@ public class CreateCourse extends Activity implements AdapterView.OnItemSelected
                         this));
 
         final List <String> preRequisites_list = new ArrayList <String>();
-        preRequisites_list.add("Select Pre-Requisites");
         preRequisites_list.add("Practice of Programming");
         preRequisites_list.add("C Programming");
         preRequisites_list.add("C++ Programming");
@@ -133,8 +121,11 @@ public class CreateCourse extends Activity implements AdapterView.OnItemSelected
         courseTA_list.add("Neha Arora");
         courseTA_list.add("Niharika Gupta");
         courseTA_list.add("Priyanka Balotra");
+        courseTA_list.add("Rupali Jain");
+        courseTA_list.add("Ruckika Banerjee");
         courseTA_list.add("Shubham Shrivastrava");
         courseTA_list.add("Sakshi Aggarwal");
+        courseTA_list.add("Shishagnee Banerjee");
         courseTA_list.add("Veronika Sharma");
         spinnerCourseTA.setItems(courseTA_list);
 
@@ -179,11 +170,24 @@ public class CreateCourse extends Activity implements AdapterView.OnItemSelected
         });
 
     }
+    private void findAllViewsId() {
+        txtCourseId = (EditText) findViewById(R.id.editText_courseId);
+        txtCourseName = (EditText) findViewById(R.id.editText_courseName);
+        txtAdmin = (EditText) findViewById(R.id.editText_admin);
+        txtOverview = (EditText) findViewById(R.id.editText_overview);
+        txtPostConditions = (EditText) findViewById(R.id.editText_postCondition);
+        spinnerInstitution = (Spinner) findViewById(R.id.spinner_institution);
+        spinnerPreRequisites = (MultiSelectionSpinner) findViewById(R.id.spinner_preRequisites);
+        spinnerInstructors = (MultiSelectionSpinner) findViewById(R.id.spinner_instructors);
+        spinnerCourseTA = (MultiSelectionSpinner) findViewById(R.id.spinner_ta);
+        mRegisterCourseButton = (Button) findViewById(R.id.button_registerCourse);
+        mClearButton = (Button) findViewById(R.id.button_clear);
 
+    }
     public void getData() {
         _courseID = txtCourseId.getText().toString();
         _courseName = txtCourseName.getText().toString();
-        _admin=txtAdmin.getText().toString();
+        /*_admin=txtAdmin.getText().toString();*/
         _postCondition=txtPostConditions.getText().toString();
         _overview=txtOverview.getText().toString();
 

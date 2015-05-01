@@ -11,12 +11,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.common.collect.Iterables;
+
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 import java.util.Vector;
 
 import iavanish.collegepal.R;
+import iavanish.collegepal.Start.StudentDashboard;
 import iavanish.collegepal.Start.User;
 import iavanish.collegepal.Start.UserClientApi;
 import retrofit.RestAdapter;
@@ -27,29 +31,21 @@ public class DisplayCourse extends Activity {
     private CourseClientApi courseService = new RestAdapter.Builder()
             .setEndpoint(URL).setLogLevel(RestAdapter.LogLevel.FULL).build()
             .create(CourseClientApi.class);
-
+    private UserClientApi userService = new RestAdapter.Builder()
+            .setEndpoint(URL).setLogLevel(RestAdapter.LogLevel.FULL).build()
+            .create(UserClientApi.class);
     TextView txt_courseID, txt_courseName, txt_admin, txt_overview, txt_institution, txt_preRequisites, txt_postConditions, txt_instructors,txt_courseTA;
     Button button_editprofile, button_proceed;
 
     String _courseID,_courseName,_admin,_overview,_institution,_preRequisities,_postConditions,_instructors,_courseTA;
 
     Course course;
+    Collection<User> user;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_display);
-
-        txt_courseID = (TextView)findViewById(R.id.text_courseID);
-        txt_courseName = (TextView)findViewById(R.id.text_courseName);
-        txt_admin = (TextView)findViewById(R.id.text_admin);
-        txt_overview = (TextView)findViewById(R.id.text_overview);
-        txt_institution = (TextView)findViewById(R.id.text_institution);
-        txt_preRequisites = (TextView)findViewById(R.id.text_preRequisites);
-        txt_postConditions = (TextView)findViewById(R.id.text_postConditions);
-        txt_instructors = (TextView)findViewById(R.id.textView_instructors);
-        txt_courseTA = (TextView)findViewById(R.id.text_courseTA);
-
-        button_editprofile =(Button) findViewById(R.id.button_editprofile);
-        button_proceed =(Button) findViewById(R.id.button_proceed);
+        setContentView(R.layout.activity_display_course);
+        findAllViewsId();
 
         Intent in = getIntent();
         Bundle b = in.getExtras();
@@ -64,11 +60,11 @@ public class DisplayCourse extends Activity {
             _instructors = b.getString("Instructors");
             _courseTA = b.getString("TA");
 
-            _preRequisities = _preRequisities.replace(',', '\n');
-            _postConditions = _postConditions.replace(',', '\n');
-            _instructors = _instructors.replace(',', '\n');
-            _courseTA = _courseTA.replace(',', '\n');
-
+//            _preRequisities = _preRequisities.replace(',', '\n');
+//            _postConditions = _postConditions.replace(',', '\n');
+//            _instructors = _instructors.replace(',', '\n');
+//            _courseTA = _courseTA.replace(',', '\n');
+            System.out.println("CourseID:"+_courseID);
             txt_courseID.setText(_courseID);
             txt_courseName.setText(_courseName);
             txt_admin.setText(_admin);
@@ -104,7 +100,7 @@ public class DisplayCourse extends Activity {
                 studentRegistered.add("");
 
                 String id = UUID.randomUUID().toString();
-                course=new Course(id,_courseID,
+                course=new Course(id,id,_courseID,
                         _courseName,_admin,_overview,
                         _institution,
                         preRequisities,
@@ -129,6 +125,20 @@ public class DisplayCourse extends Activity {
         });
 
     }
+    private void findAllViewsId() {
+        txt_courseID = (TextView)findViewById(R.id.text_courseID);
+        txt_courseName = (TextView)findViewById(R.id.text_courseName);
+        txt_admin = (TextView)findViewById(R.id.text_admin);
+        txt_overview = (TextView)findViewById(R.id.text_overview);
+        txt_institution = (TextView)findViewById(R.id.text_institution);
+        txt_preRequisites = (TextView)findViewById(R.id.text_preRequisites);
+        txt_postConditions = (TextView)findViewById(R.id.text_postConditions);
+        txt_instructors = (TextView)findViewById(R.id.text_instructors);
+        txt_courseTA = (TextView)findViewById(R.id.text_courseTA);
+        button_editprofile =(Button) findViewById(R.id.button_editprofile);
+        button_proceed =(Button) findViewById(R.id.button_proceed);
+
+    }
     private class UserTask extends AsyncTask<String, Void, Boolean>
     {
 
@@ -143,9 +153,58 @@ public class DisplayCourse extends Activity {
         @Override
         protected void onPostExecute(Boolean b)
         {
-            if(b)
-                Toast.makeText(getApplicationContext(), "Jai mata Di Done", Toast.LENGTH_LONG).show();
-            System.out.print("test");
+
+            CourseUpdateTask tsk = new CourseUpdateTask();
+            tsk.execute();
+
+
         }
     }
+    private class CourseUpdateTask extends AsyncTask<String, Void, Boolean>
+    {
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            Boolean ok;
+            User tempUser;
+            User newUser;
+            user = userService.findByEmailIdIgnoreCase(_admin);
+            if (!user.isEmpty()) {
+                tempUser = Iterables.getFirst(user, null);
+                Vector<String> coursesOffering=new Vector<String>();
+                coursesOffering.addAll(tempUser.getCourseEnrolled());
+                coursesOffering.add(_courseName);
+
+                newUser = new User(tempUser.getStr(), tempUser.getStr(),
+                       tempUser.getEmailId(), tempUser.getName(), tempUser.getCourse(),tempUser.getBranch(),
+                        tempUser.getInstitution(),
+                        tempUser.getSkills(),
+                        tempUser.getCourseEnrolled() ,
+                        coursesOffering
+                );
+                ok = userService.addUser(newUser);
+                return ok;
+            }
+            else
+                return false;
+        }
+        @Override
+        protected void onPostExecute(Boolean b)
+        {
+
+            //if(b)
+            Toast.makeText(getApplicationContext(), "Jai mata Di Done", Toast.LENGTH_LONG).show();
+            System.out.println("test");
+            Bundle bundle = new Bundle();
+            bundle.putString("Email", _admin);
+            Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+            onBackPressed();
+
+           System.out.println("Update done");
+        }
+    }
+
+
 }

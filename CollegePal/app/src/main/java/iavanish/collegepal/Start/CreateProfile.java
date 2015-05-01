@@ -33,17 +33,7 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
-        txtEmail = (EditText) findViewById(R.id.editText_emailID);
-        txtName = (EditText) findViewById(R.id.editText_name);
-        spinnerCourse = (Spinner) findViewById(R.id.spinner_course);
-        spinnerBranch = (Spinner) findViewById(R.id.spinner_branch);
-        spinnerInstitution = (Spinner) findViewById(R.id.spinner_institution);
-        spinnerSkills = (MultiSelectionSpinner) findViewById(R.id.spinner_preRequisites);
-        spinnerCourseEnrolled = (MultiSelectionSpinner) findViewById(R.id.spinner_courseEnrolled);
-        spinnerCourseOffering = (MultiSelectionSpinner) findViewById(R.id.spinner_courseOffering);
-        mRegisterButton = (Button) findViewById(R.id.button_register);
-        mClearButton = (Button) findViewById(R.id.button_clear);
+        findAllViewsId();
 
         Intent in = getIntent();
 
@@ -174,8 +164,8 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
             @Override
             public void onClick(View v) {
 
-                txtEmail.setText("");
-                txtName.setText("");
+                /*txtEmail.setText("");
+                txtName.setText("");*/
 
             }
         });
@@ -184,7 +174,7 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
             @Override
             public void onClick(View v) {
                 getData();
-                if (_emailID.length() == 0 || _name.length() == 0 || _course.length() == 0 || _branch.length() == 0 || _institution.length() == 0 || _skills.length() == 0 || _courseEnrolled.length() == 0 || _courseOffering.length() == 0) {
+                if (_emailID.length() == 0 || _name.length() == 0 || _course.length() == 0 || _branch.length() == 0 || _institution.length() == 0 || _skills.length() == 0) {
                     Toast.makeText(getApplicationContext(), "Complete the form correctly", Toast.LENGTH_SHORT).show();
                 } else {
 
@@ -195,8 +185,8 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
                     b.putString("Branch", _branch);
                     b.putString("Institution", _institution);
                     b.putString("Skills", _skills);
-                    b.putString("CourseEnrolled", _courseEnrolled);
-                    b.putString("CourseOffering", _courseOffering);
+                   /* b.putString("CourseEnrolled", _courseEnrolled);
+                    b.putString("CourseOffering", _courseOffering);*/
 
                     Intent intent = new Intent(CreateProfile.this, DisplayProfile.class);
                     intent.putExtras(b);
@@ -206,7 +196,19 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
         });
 
     }
-
+    private void findAllViewsId()
+    {
+        txtEmail = (EditText) findViewById(R.id.editText_emailID);
+        txtName = (EditText) findViewById(R.id.editText_name);
+        spinnerCourse = (Spinner) findViewById(R.id.spinner_course);
+        spinnerBranch = (Spinner) findViewById(R.id.spinner_branch);
+        spinnerInstitution = (Spinner) findViewById(R.id.spinner_institution);
+        spinnerSkills = (MultiSelectionSpinner) findViewById(R.id.spinner_preRequisites);
+        spinnerCourseEnrolled = (MultiSelectionSpinner) findViewById(R.id.spinner_courseEnrolled);
+        spinnerCourseOffering = (MultiSelectionSpinner) findViewById(R.id.spinner_courseOffering);
+        mRegisterButton = (Button) findViewById(R.id.button_register);
+        mClearButton = (Button) findViewById(R.id.button_clear);
+    }
     public void getData() {
         _emailID = txtEmail.getText().toString();
         _name = txtName.getText().toString();

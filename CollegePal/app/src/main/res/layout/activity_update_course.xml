@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="iavanish.collegepal.Courses.CreateCourse">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ScrollView01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+            android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            tools:context="iavanish.collegepal.Courses.CreateCourse">
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Course ID"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/textView_courseId" />
+
+                <EditText
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/editText_courseId" />
+            </TableRow>
+            <TableRow></TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Course Name"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/textView_courseName" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/editText_courseName"/>
+            </TableRow>
+            <TableRow></TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Admin"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/textView_admin"/>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/editText_admin"/>
+            </TableRow>
+            <TableRow></TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Overview"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/textView_overview" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/editText_overview" />
+            </TableRow>
+            <TableRow></TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Institution"
+                    android:id="@+id/textView_institution"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"/>
+
+                <Spinner
+                    android:id="@+id/spinner_institution"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select Course"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="15dp"
+                    android:spinnerMode="dropdown"
+                    android:prompt="@string/spinner_course" />
+            </TableRow>
+            <TableRow></TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pre-Requisites"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/textView_prerequisites" />
+
+                <iavanish.collegepal.Start.MultiSelectionSpinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner_preRequisites"
+                    android:text="Select Pre-Requisites"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="15dp"
+                    android:spinnerMode="dropdown" />
+            </TableRow>
+            <TableRow></TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Post Conditions"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/textView_postConditions" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/editText_postCondition"/>
+            </TableRow>
+            <TableRow></TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Instructors"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/textView_instructors" />
+
+
+                <iavanish.collegepal.Start.MultiSelectionSpinner
+                    android:id="@+id/spinner_instructors"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select Instructors"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="15dp"
+                    android:spinnerMode="dropdown" />
+            </TableRow>
+            <TableRow></TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Course TAs"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/textView_ta" />
+
+                <iavanish.collegepal.Start.MultiSelectionSpinner
+                    android:id="@+id/spinner_ta"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select TAs"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="15dp"
+                    android:spinnerMode="dropdown"/>
+
+            </TableRow>
+            <TableRow></TableRow>
+            <TableRow></TableRow>
+            <TableLayout>
+                <TableRow>
+                    <Button
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Update"
+                        android:id="@+id/button_updateCourse"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:width="150dp" />
+
+                    <Button
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Clear"
+                        android:id="@+id/button_clear"
+                        android:layout_weight="1"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="8dp"
+                        android:width="150dp" />
+                </TableRow>
+            </TableLayout>
+        </TableLayout>
+    </ScrollView>
+</LinearLayout>
