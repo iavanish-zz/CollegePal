@@ -2,6 +2,8 @@ package iavanish.collegepal.Courses;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,36 +15,51 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.common.collect.Iterables;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.Vector;
 
 import iavanish.collegepal.R;
 import iavanish.collegepal.Start.DisplayProfile;
 import iavanish.collegepal.Start.MultiSelectionSpinner;
 import iavanish.collegepal.Start.NothingSelectedSpinnerAdapter;
+import retrofit.RestAdapter;
 
-public class CreateCourse extends Activity implements AdapterView.OnItemSelectedListener {
+public class UpdateCourse extends Activity implements AdapterView.OnItemSelectedListener {
 
-    private Button mRegisterCourseButton,mClearButton;
+    private final String URL = "http://192.168.55.74:8080";
+    private CourseClientApi courseService = new RestAdapter.Builder()
+            .setEndpoint(URL).setLogLevel(RestAdapter.LogLevel.FULL).build()
+            .create(CourseClientApi.class);
+
+    private Button mUpdateCourseButton,mClearButton;
     private EditText txtCourseId,txtCourseName, txtAdmin, txtOverview, txtPostConditions;
     private Spinner spinnerInstitution;
     MultiSelectionSpinner spinnerPreRequisites, spinnerInstructors, spinnerCourseTA;
 
     String _courseID,_courseName,_admin,_overview,_postCondition,_institution,_preRequisities,_instructors, _ta;
 
+    Collection<Course> course;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_course);
-
+        setContentView(R.layout.activity_update_course);
         findAllViewsId();
         Intent in = getIntent();
 
         Bundle b = in.getExtras();
         if(b!=null) {
             _admin = b.getString("Email");
+            _courseID = b.getString("CourseID");
         }
-
+        System.out.println("Admin"+_admin);
+        System.out.println("courseid"+_courseID);
+        txtCourseId.setText(_courseID);
         txtAdmin.setText(_admin);
 
         spinnerInstitution.setOnItemSelectedListener(this);
@@ -141,7 +158,7 @@ public class CreateCourse extends Activity implements AdapterView.OnItemSelected
                 txtOverview.setText("");
             }
         });
-        mRegisterCourseButton.setOnClickListener(new View.OnClickListener() {
+        mUpdateCourseButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -150,27 +167,16 @@ public class CreateCourse extends Activity implements AdapterView.OnItemSelected
                     Toast.makeText(getApplicationContext(), "Complete the form correctly", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    Bundle b = new Bundle();
 
-                    b.putString("CourseID", _courseID);
-                    b.putString("CourseName", _courseName);
-                    b.putString("Admin", _admin);
-                    b.putString("Overview", _overview);
-                    b.putString("postCondition", _postCondition);
-                    b.putString("Institution", _institution);
-                    b.putString("preRequisites", _preRequisities);
-                    b.putString("Instructors", _instructors);
-                    b.putString("TA", _ta);
-
-                    Intent intent = new Intent(CreateCourse.this, DisplayCourse.class);
-                    intent.putExtras(b);
-                    startActivity(intent);
+                    UserTask tsk = new UserTask();
+                    tsk.execute();
                 }
             }
         });
 
     }
     private void findAllViewsId() {
+
         txtCourseId = (EditText) findViewById(R.id.editText_courseId);
         txtCourseName = (EditText) findViewById(R.id.editText_courseName);
         txtAdmin = (EditText) findViewById(R.id.editText_admin);
@@ -180,7 +186,7 @@ public class CreateCourse extends Activity implements AdapterView.OnItemSelected
         spinnerPreRequisites = (MultiSelectionSpinner) findViewById(R.id.spinner_preRequisites);
         spinnerInstructors = (MultiSelectionSpinner) findViewById(R.id.spinner_instructors);
         spinnerCourseTA = (MultiSelectionSpinner) findViewById(R.id.spinner_ta);
-        mRegisterCourseButton = (Button) findViewById(R.id.button_registerCourse);
+        mUpdateCourseButton = (Button) findViewById(R.id.button_updateCourse);
         mClearButton = (Button) findViewById(R.id.button_clear);
 
     }
@@ -216,5 +222,76 @@ public class CreateCourse extends Activity implements AdapterView.OnItemSelected
         // TODO Auto-generated method stub
 
     }
+    private class UserTask extends AsyncTask<String, Void, Boolean>
+    {
 
+        @Override
+        protected Boolean doInBackground(String... params) {
+            Boolean ok;
+            Course tempCourse;
+            Course newCourse;
+            course = courseService.findByCourseIdIgnoreCase(_courseID);
+            if (!course.isEmpty()) {
+                tempCourse = Iterables.getFirst(course, null);
+
+                Vector<String> preRequisities =new Vector<String>();
+                List<String> preRequisities_list = Arrays.asList(_preRequisities.split("\\s*,\\s*"));
+                preRequisities.addAll(preRequisities_list);
+
+                Vector<String> postConditions=new Vector<String>();
+                List<String> postConditions_list = Arrays.asList(_postCondition.split("\\s*,\\s*"));
+                postConditions.addAll(postConditions_list);
+
+                Vector<String> instructors=new Vector<String>();
+                List<String> instructors_list = Arrays.asList(_instructors.split("\\s*,\\s*"));
+                instructors.addAll(instructors_list);
+
+                Vector<String> courseTA=new Vector<String>();
+                List<String> courseTA_list = Arrays.asList(_ta.split("\\s*,\\s*"));
+                courseTA.addAll(courseTA_list);
+                Vector<String> studentRegistered=new Vector<String>();
+                studentRegistered.add("");
+                if(tempCourse.getCourseId().equalsIgnoreCase(_courseID) && tempCourse.getAdmin().equalsIgnoreCase(_admin)) {
+                    newCourse = new Course(tempCourse.getStr(),tempCourse.getStr(), _courseID,
+                            _courseName, tempCourse.getAdmin(), _overview,
+                            _institution,
+                            preRequisities,
+                            postConditions,
+                            courseTA,
+                            instructors,
+                            tempCourse.getStudentRegistered());
+                    ok = courseService.addCourse(newCourse);
+                    return ok;
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "You are not admin for this course, Can't update this course!!", Toast.LENGTH_LONG).show();
+                    onBackPressed();
+                    return false;
+                }
+            }
+            else
+                return false;
+        }
+        @Override
+        protected void onPostExecute(Boolean b)
+        {
+            /*if(b) {*/
+                Toast.makeText(getApplicationContext(), "Jai mata Di Done", Toast.LENGTH_LONG).show();
+                onBackPressed();
+            //}
+            System.out.println("Update done");
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

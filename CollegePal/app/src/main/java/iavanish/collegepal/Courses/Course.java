@@ -11,6 +11,7 @@ public class Course {
 
     private String id;
 
+    private String str;
     private String courseId;
     private String courseName;
     private String admin;
@@ -22,11 +23,12 @@ public class Course {
     private Vector<String> courseTA;
     private Vector<String> studentRegistered;
 
-    public Course(String id,String courseId, String courseName, String admin, String overview, String institution, Vector<String> preRequisites, Vector<String> postConditions, Vector<String> instructors, Vector<String> courseTA, Vector<String> studentRegistered) {
+    public Course(String id,String str,String courseId, String courseName, String admin, String overview, String institution, Vector<String> preRequisites, Vector<String> postConditions, Vector<String> instructors, Vector<String> courseTA, Vector<String> studentRegistered) {
         super();
         this.id=id;
-        this.courseId=courseId;
 
+        this.str=str;
+        this.courseId=courseId;
         this.courseName = courseName;
         this.admin = admin;
         this.overview = overview;
@@ -49,6 +51,14 @@ public class Course {
     }
     public void setId(String temp){
         this.id = temp;
+    }
+
+    public String getStr(){
+        return this.str;
+    }
+
+    public void setStr(String temp){
+        this.str= temp;
     }
 
     public String getCourseId(){
@@ -145,4 +155,14 @@ public class Course {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
 

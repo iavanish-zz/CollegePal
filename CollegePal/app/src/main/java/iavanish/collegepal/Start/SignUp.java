@@ -86,13 +86,7 @@ public class SignUp extends FragmentActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mSignInButton = (SignInButton) findViewById(R.id.sign_in_button);
-        mSignOutButton = (Button) findViewById(R.id.sign_out_button);
-        mRegisterButton = (Button) findViewById(R.id.register_button);
-        mStatus = (TextView) findViewById(R.id.sign_in_status);
-        mEmail = (TextView) findViewById(R.id.circles_title);
-        imageProfilePic = (ImageView) findViewById(R.id.image_profilepic);
+        findAllViewsId();
 
         mSignInButton.setOnClickListener(this);
         mSignOutButton.setOnClickListener(this);
@@ -106,7 +100,14 @@ public class SignUp extends FragmentActivity implements
 
         mGoogleApiClient = buildGoogleApiClient();
     }
-
+    private void findAllViewsId() {
+        mSignInButton = (SignInButton) findViewById(R.id.sign_in_button);
+        mSignOutButton = (Button) findViewById(R.id.sign_out_button);
+        mRegisterButton = (Button) findViewById(R.id.register_button);
+        mStatus = (TextView) findViewById(R.id.sign_in_status);
+        mEmail = (TextView) findViewById(R.id.circles_title);
+        imageProfilePic = (ImageView) findViewById(R.id.image_profilepic);
+    }
     private GoogleApiClient buildGoogleApiClient() {
 
         return new GoogleApiClient.Builder(this)
@@ -345,7 +346,7 @@ public class SignUp extends FragmentActivity implements
 
             try {
                 String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
-                user = userService.findByEmailId(email);
+                user = userService.findByEmailIdIgnoreCase(email);
                 User temp = null;
                 Log.e(TAG, "user" + user);
                 Log.e(TAG, "Email" + email);
@@ -370,6 +371,15 @@ public class SignUp extends FragmentActivity implements
             if(b){
                 Toast.makeText(getApplicationContext(), "You are already registered", Toast.LENGTH_LONG).show();
                 mRegisterButton.setEnabled(false);
+                Person currentUser = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
+                String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
+                String userName = currentUser.getDisplayName();
+                Bundle bundle = new Bundle();
+                bundle.putString("Email", email);
+                bundle.putString("Name", userName);
+                Intent intent = new Intent(getApplicationContext(), StudentDashboard.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
             else{
                 Toast.makeText(getApplicationContext(), "You are not registered, Need to register", Toast.LENGTH_LONG).show();
@@ -400,8 +410,8 @@ public class SignUp extends FragmentActivity implements
 
         protected void onPostExecute(Bitmap result) {
             bmImage.setImageBitmap(result);
-            /*UserTask tsk = new UserTask();
-            tsk.execute();*/
+            UserTask tsk = new UserTask();
+            tsk.execute();
 
         }
     }

@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="16dp"
+    android:paddingRight= "16dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="iavanish.collegepal.Courses.Start.CreateProfile">
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ScrollView02"
     android:layout_width="fill_parent"
@@ -26,7 +34,7 @@
             android:inputType="textEmailAddress"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="17dp"
+            android:layout_marginStart="10dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="15dp"
             android:id="@+id/editText_emailID"/>
@@ -47,7 +55,7 @@
             android:inputType="textPersonName"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="17dp"
+            android:layout_marginStart="10dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="15dp"
             android:id="@+id/editText_name"/>
@@ -58,7 +66,7 @@
             android:layout_height="wrap_content"
             android:text="Course"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="17dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:id="@+id/text_course" />
         <Spinner
@@ -69,7 +77,7 @@
             android:spinnerMode="dropdown"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="17dp"
+            android:layout_marginStart="10dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="15dp"
             android:prompt="@string/spinner_course" />
@@ -90,7 +98,7 @@
             android:spinnerMode="dropdown"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="17dp"
+            android:layout_marginStart="10dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="15dp"
             android:text="Select Branch"/>
@@ -111,7 +119,7 @@
             android:text="Select Institution"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="17dp"
+            android:layout_marginStart="10dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="15dp"
             android:spinnerMode="dropdown" />
@@ -134,12 +142,36 @@
             android:text="Select Skills"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="17dp"
+            android:layout_marginStart="10dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="15dp"
             android:spinnerMode="dropdown" />
 
 </TableRow>
+        <TableLayout>
+            <TableRow>
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Register"
+                    android:id="@+id/button_register"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_column="0"
+                    android:width="150dp"/>
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Clear"
+                    android:id="@+id/button_clear"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:layout_marginRight="8dp"
+                    android:width="150dp"/>
+            </TableRow>
+        </TableLayout>
 <TableRow>
         <TextView
             android:layout_width="wrap_content"
@@ -148,6 +180,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
+            android:visibility="invisible"
             android:id="@+id/text_courseOffered" />
 
         <iavanish.collegepal.Start.MultiSelectionSpinner
@@ -155,9 +188,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/spinner_courseEnrolled"
             android:text="Select Courses Enrolled"
+            android:visibility="invisible"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="17dp"
+            android:layout_marginStart="10dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="15dp"
             android:spinnerMode="dropdown"/>
@@ -167,6 +201,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Course \nOffering"
+            android:visibility="invisible"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
@@ -178,38 +213,16 @@
             android:layout_height="wrap_content"
             android:id="@+id/spinner_courseOffering"
             android:text="Select Courses Offering"
+            android:visibility="invisible"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="17dp"
+            android:layout_marginStart="10dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="15dp"
             android:spinnerMode="dropdown" />
 
 </TableRow>
-
-<TableLayout>
-<TableRow>
-
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Register"
-            android:id="@+id/button_register"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="30dp"
-            android:width="120dp"
-            />
-
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="Clear"
-        android:id="@+id/button_clear"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp" />
-</TableRow>
-</TableLayout>
  </TableLayout>
 
 </ScrollView>
+</LinearLayout>

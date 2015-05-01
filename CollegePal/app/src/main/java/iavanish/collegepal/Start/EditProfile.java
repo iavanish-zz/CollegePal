@@ -2,6 +2,8 @@ package iavanish.collegepal.Start;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,15 +14,26 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.common.collect.Iterables;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.Vector;
 
 import iavanish.collegepal.R;
+import retrofit.RestAdapter;
 
 /**
  * Created by Himanshu on 3/29/2015.
  */
-public class CreateProfile extends Activity implements OnItemSelectedListener {
+public class EditProfile extends Activity implements OnItemSelectedListener {
+
+    private final String URL = "http://192.168.55.74:8080";
+    private UserClientApi userService = new RestAdapter.Builder()
+            .setEndpoint(URL).setLogLevel(RestAdapter.LogLevel.FULL).build()
+            .create(UserClientApi.class);
 
     private Button mRegisterButton,mClearButton;
     private EditText txtEmail,txtName;
@@ -28,13 +41,13 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
     MultiSelectionSpinner spinnerSkills, spinnerCourseEnrolled, spinnerCourseOffering;
 
     String _emailID,_name,_course,_branch,_institution,_skills,_courseEnrolled,_courseOffering;
+    Collection<User> user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_edit_profile);
         findAllViewsId();
-
         Intent in = getIntent();
 
         Bundle b = in.getExtras();
@@ -178,26 +191,14 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
                     Toast.makeText(getApplicationContext(), "Complete the form correctly", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    Bundle b = new Bundle();
-                    b.putString("Email", _emailID);
-                    b.putString("Name", _name);
-                    b.putString("Course", _course);
-                    b.putString("Branch", _branch);
-                    b.putString("Institution", _institution);
-                    b.putString("Skills", _skills);
-                   /* b.putString("CourseEnrolled", _courseEnrolled);
-                    b.putString("CourseOffering", _courseOffering);*/
-
-                    Intent intent = new Intent(CreateProfile.this, DisplayProfile.class);
-                    intent.putExtras(b);
-                    startActivity(intent);
+                    UserTask tsk = new UserTask();
+                    tsk.execute();
                 }
             }
         });
-
     }
-    private void findAllViewsId()
-    {
+    private void findAllViewsId() {
+
         txtEmail = (EditText) findViewById(R.id.editText_emailID);
         txtName = (EditText) findViewById(R.id.editText_name);
         spinnerCourse = (Spinner) findViewById(R.id.spinner_course);
@@ -208,13 +209,14 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
         spinnerCourseOffering = (MultiSelectionSpinner) findViewById(R.id.spinner_courseOffering);
         mRegisterButton = (Button) findViewById(R.id.button_register);
         mClearButton = (Button) findViewById(R.id.button_clear);
+
     }
     public void getData() {
         _emailID = txtEmail.getText().toString();
         _name = txtName.getText().toString();
         _skills = spinnerSkills.getSelectedItemsAsString();
-        _courseEnrolled = spinnerCourseEnrolled.getSelectedItemsAsString();
-        _courseOffering = spinnerCourseOffering.getSelectedItemsAsString();
+        /*_courseEnrolled = spinnerCourseEnrolled.getSelectedItemsAsString();
+        _courseOffering = spinnerCourseOffering.getSelectedItemsAsString();*/
     }
 
     @Override
@@ -250,5 +252,64 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
         // TODO Auto-generated method stub
 
     }
+
+    private class UserTask extends AsyncTask<String, Void, Boolean>
+    {
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            Boolean ok;
+            User tempUser;
+            User newUser;
+            user = userService.findByEmailIdIgnoreCase(_emailID);
+            if (!user.isEmpty()) {
+                tempUser = Iterables.getFirst(user, null);
+                Vector<String> skills=new Vector<String>();
+                List<String> skills_list = Arrays.asList(_skills.split("\\s*,\\s*"));
+                skills.addAll(skills_list);
+
+                /*Vector<String> coursesEnrolled=new Vector<String>();
+                List<String> coursesEnrolled_list = Arrays.asList(_courseEnrolled.split("\\s*,\\s*"));
+                coursesEnrolled.addAll(coursesEnrolled_list);
+
+                Vector<String> coursesOffering=new Vector<String>();
+                List<String> coursesOffering_list = Arrays.asList(_courseOffering.split("\\s*,\\s*"));
+                coursesOffering.addAll(coursesOffering_list);*/
+
+                newUser = new User(tempUser.getStr(), tempUser.getStr(),
+                        _emailID, _name,_course,_branch,
+                        _institution,
+                        skills,
+                        tempUser.getCourseEnrolled() ,
+                        tempUser.getCoursesOffering());
+                ok = userService.addUser(newUser);
+                return ok;
+            }
+            else
+                return false;
+        }
+        @Override
+        protected void onPostExecute(Boolean b)
+        {
+           /* if(b) {*/
+                Toast.makeText(getApplicationContext(), "Jai mata Di Done", Toast.LENGTH_LONG).show();
+                onBackPressed();
+            //}
+            System.out.println("Update done");
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 }
