@@ -30,6 +30,8 @@ public interface UserRepository extends MongoRepository<User, String>{
 	
 	public Collection<User> findByCourseContainingIgnoreCase(
 			@Param ("course") String course);
+	
+	
 	/*
 	public long deleteByEmailId(
 			@Param ("emailid") String emailId);

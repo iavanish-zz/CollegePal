@@ -12,14 +12,15 @@ import retrofit.http.Query;
  * Created by Himanshu on 4/18/2015.
  */
 public interface DeadlineClientApi {
+
     @GET("/deadline")
     public Collection<Deadline> getDeadlineList();
 
     @POST("/deadline")
     public Boolean addDeadline(@Body Deadline deadline);
 
-    @GET("/user/search/findByDeadlineId")
-    public Collection<Deadline> findByDeadlineId(@Query("deadlineid") String deadlineId);
+    @GET("/deadline/search/findByDeadlineIdIgnoreCase")
+    public Collection<Deadline> findByDeadlineIdIgnoreCase(@Query("deadlineid") String deadlineId);
+
 
 }
-

@@ -17,7 +17,7 @@ public class User {
 
 	@Id
 	private String id;
-
+    private String str;
     private String emailId;
     private String name;
     private String course;
@@ -27,11 +27,11 @@ public class User {
     private Vector<String> courseEnrolled;
     private Vector<String> coursesOffering;
 
-    public User(String id,String emailId, String name, String course, String branch, String institution, Vector<String> skills, Vector<String> courseEnrolled, Vector<String> coursesOffering) {
+    public User(String id,String str,String emailId, String name, String course, String branch, String institution, Vector<String> skills, Vector<String> courseEnrolled, Vector<String> coursesOffering) {
         super();
         this.id=id;
         this.emailId=emailId;
-
+        this.str=str;
         this.name = name;
         this.course = course;
         this.branch = branch;
@@ -54,7 +54,13 @@ public class User {
     public void setId(String temp){
         this.id = temp;
     }
+    public String getStr(){
+        return this.str;
+    }
 
+    public void setStr(String temp){
+        this.str= temp;
+    }
     public String getEmailId(){
         return this.emailId;
     }
