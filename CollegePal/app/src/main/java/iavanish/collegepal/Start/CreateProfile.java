@@ -164,8 +164,12 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
             @Override
             public void onClick(View v) {
 
-                /*txtEmail.setText("");
-                txtName.setText("");*/
+                spinnerCourse.setSelection(0);
+                spinnerBranch.setSelection(0);
+                spinnerInstitution.setSelection(0);
+                spinnerSkills.setSelection(0);
+                spinnerCourseEnrolled.setSelection(0);
+                spinnerCourseOffering.setSelection(0);
 
             }
         });
@@ -185,8 +189,6 @@ public class CreateProfile extends Activity implements OnItemSelectedListener {
                     b.putString("Branch", _branch);
                     b.putString("Institution", _institution);
                     b.putString("Skills", _skills);
-                   /* b.putString("CourseEnrolled", _courseEnrolled);
-                    b.putString("CourseOffering", _courseOffering);*/
 
                     Intent intent = new Intent(CreateProfile.this, DisplayProfile.class);
                     intent.putExtras(b);

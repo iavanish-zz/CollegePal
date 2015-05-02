@@ -59,8 +59,9 @@ public class CourseDashBoardView extends Activity {
             public void onClick(View v) {
              //Deadline Code
                 Bundle bundle = new Bundle();
-                bundle.putString("Email", _admin);
+                bundle.putString("Email", _emailId);
                 bundle.putString("CourseName", _courseName);
+                System.out.println("Email in Course Dashboard view"+_emailId);
                 Intent intent = new Intent(getApplicationContext(), DeadlineActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);

@@ -128,7 +128,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select Course"
+                android:text="Search Course"
                 android:id="@+id/button_selectCourse"
                 android:layout_column="1"
                 android:layout_marginTop="40dp"

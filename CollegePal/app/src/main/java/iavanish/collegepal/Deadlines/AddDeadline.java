@@ -2,6 +2,7 @@ package iavanish.collegepal.Deadlines;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,11 +12,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
+import iavanish.collegepal.Courses.Course;
+import iavanish.collegepal.Courses.DisplayCourse;
 import iavanish.collegepal.R;
 import iavanish.collegepal.Start.NothingSelectedSpinnerAdapter;
 import retrofit.RestAdapter;
@@ -31,7 +36,7 @@ public class AddDeadline extends Activity implements AdapterView.OnItemSelectedL
     private EditText txtDeadlineId,txtCourseId,txtEmailId, txtDate, txtDeadlineDetail;
     private Spinner spinnerDeadlineType;
     String  _deadlineId,_emailId, _courseID, _deadlineDate,_deadlineType, _deadlineDetails;
-    Collection<Deadline> deadline;
+    Deadline deadline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,9 @@ public class AddDeadline extends Activity implements AdapterView.OnItemSelectedL
             _courseID = b.getString("CourseId");
             _emailId = b.getString("Email");
         }
+
+        txtCourseId.setText(_courseID);
+        txtEmailId.setText(_emailId);
 
         spinnerDeadlineType.setOnItemSelectedListener(this);
         List<String> deadlineType = new ArrayList<String>();
@@ -63,14 +71,59 @@ public class AddDeadline extends Activity implements AdapterView.OnItemSelectedL
                         R.layout.spinner_row_nothing_selected,
                         this));
 
+        button_clear.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                txtDeadlineId.setText("");
+                txtDate.setText("");
+                txtDeadlineDetail.setText("");
+                spinnerDeadlineType.setSelection(0);
 
+            }
+        });
+        button_addDeadline.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                getData();
+                if (_deadlineId.length() == 0 || _courseID.length() == 0 || _emailId.length() == 0 || _deadlineDate.length() == 0 || _deadlineDetails.length() == 0 || _deadlineType.length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Complete the form correctly", Toast.LENGTH_SHORT).show();
+                } else {
 
-
-
+                    String id = UUID.randomUUID().toString();
+                    deadline = new Deadline(id, id, _deadlineId,
+                            _courseID, _emailId, _deadlineDate,
+                            _deadlineDetails,
+                            _deadlineType,
+                            false);
+                    UserTask tsk = new UserTask();
+                    tsk.execute();
+                }
+            }
+        });
     }
+    private class UserTask extends AsyncTask<String, Void, Boolean>
+    {
 
+        @Override
+        protected Boolean doInBackground(String... params) {
+            Boolean ok = deadlineService.addDeadline(deadline);
+
+            if(ok!=null)
+                return ok;
+            return true;
+        }
+        @Override
+        protected void onPostExecute(Boolean b)
+        {
+
+            Toast.makeText(getApplicationContext(), "Jai mata Di Done", Toast.LENGTH_LONG).show();
+            System.out.println("test");
+            onBackPressed();
+            System.out.println("Add Deadline done");
+        }
+    }
     private void findAllViewsId() {
         txtDeadlineId = (EditText) findViewById(R.id.editText_deadlineID);
         txtCourseId = (EditText) findViewById(R.id.editText_courseID);
