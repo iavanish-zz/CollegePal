@@ -2,7 +2,6 @@
 package iavanish.collegepal.DiscussionForum;
 
 import iavanish.collegepal.CommonClasses.Student;
-import iavanish.collegepal.CommonClasses.TimeStamp;
 
 /**
  *
