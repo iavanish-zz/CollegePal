@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import iavanish.collegepal.R;
 import iavanish.collegepal.Start.NothingSelectedSpinnerAdapter;

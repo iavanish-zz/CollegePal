@@ -32,7 +32,6 @@ import com.google.common.collect.Iterables;
 import java.io.InputStream;
 import java.util.Collection;
 
-import iavanish.collegepal.CommonClasses.DataBaseWrite;
 import iavanish.collegepal.R;
 import retrofit.RestAdapter;
 

@@ -19,7 +19,6 @@ public class Comment {
     public Student student;
     public Discussion discussion;
     public String comment;
-    public TimeStamp timeStamp;
     public int vote;
     
     public Comment() {

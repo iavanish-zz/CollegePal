@@ -2,7 +2,6 @@ package iavanish.collegepal.Resource;
 
 import java.util.Collection;
 
-import iavanish.collegepal.Start.User;
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.POST;

@@ -14,15 +14,10 @@ import android.widget.Toast;
 
 import com.google.common.collect.Iterables;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-import java.util.Vector;
 
 import iavanish.collegepal.R;
-import iavanish.collegepal.Start.CreateProfile;
 import iavanish.collegepal.Start.User;
 import iavanish.collegepal.Start.UserClientApi;
 import retrofit.RestAdapter;

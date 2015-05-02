@@ -1,8 +1,8 @@
 
 package iavanish.collegepal.Resource;
 
-import iavanish.collegepal.CommonClasses.DataBaseRead;
 import iavanish.collegepal.CommonClasses.Course;
+import iavanish.collegepal.CommonClasses.DataBaseRead;
 
 /**
  *

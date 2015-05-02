@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.google.common.collect.Iterables;
 
 import java.util.Collection;
-import java.util.Vector;
 
 import iavanish.collegepal.Courses.Course;
 import iavanish.collegepal.Courses.CourseClientApi;

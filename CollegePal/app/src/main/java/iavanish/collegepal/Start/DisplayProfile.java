@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.Vector;
 
-import iavanish.collegepal.Courses.CreateCourse;
 import iavanish.collegepal.R;
 import retrofit.RestAdapter;
 

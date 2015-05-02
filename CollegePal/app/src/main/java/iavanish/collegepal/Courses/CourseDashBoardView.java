@@ -14,12 +14,9 @@ import android.widget.Toast;
 
 import com.google.common.collect.Iterables;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import java.util.Vector;
 
-import iavanish.collegepal.Deadlines.Deadline;
 import iavanish.collegepal.Deadlines.DeadlineActivity;
 import iavanish.collegepal.R;
 import retrofit.RestAdapter;

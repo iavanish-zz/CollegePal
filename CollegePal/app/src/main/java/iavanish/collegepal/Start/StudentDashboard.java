@@ -16,7 +16,6 @@ import com.google.android.gms.plus.Plus;
 
 import iavanish.collegepal.Calendar.CalendarActivity;
 import iavanish.collegepal.Courses.CourseActivity;
-import iavanish.collegepal.Courses.CreateCourse;
 import iavanish.collegepal.R;
 
 public class StudentDashboard extends Activity implements

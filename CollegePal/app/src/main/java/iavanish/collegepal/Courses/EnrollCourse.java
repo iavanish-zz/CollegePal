@@ -9,23 +9,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.common.collect.Iterables;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
 import iavanish.collegepal.R;
-import iavanish.collegepal.Start.MultiSelectionSpinner;
-import android.widget.AdapterView.OnItemSelectedListener;
 import iavanish.collegepal.Start.NothingSelectedSpinnerAdapter;
 import iavanish.collegepal.Start.User;
 import iavanish.collegepal.Start.UserClientApi;

@@ -2,7 +2,6 @@ package iavanish.collegepal.Deadlines;
 
 import java.util.Collection;
 
-import iavanish.collegepal.DiscussionForum.Discussion;
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.POST;

@@ -1,7 +1,6 @@
 
 package iavanish.collegepal.Start;
 
-import iavanish.collegepal.CommonClasses.DataBaseRead;
 import iavanish.collegepal.CommonClasses.DataBaseWrite;
 
 /**

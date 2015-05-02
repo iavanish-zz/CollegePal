@@ -1,6 +1,8 @@
 
 package iavanish.collegepal.Calendar;
 
+import java.util.ArrayList;
+
 import iavanish.collegepal.CommonClasses.Date;
 
 /**
@@ -13,15 +15,18 @@ import iavanish.collegepal.CommonClasses.Date;
  * Show private deadlines on a specific date in the calendar
  */
 
-public class ShowPrivateDeadlines extends ShowDetailsOfDate {
-    
-    public ShowPrivateDeadlines(Date date) {
-        //super(date);
-    }
-    
+public class ShowPrivateDeadlines implements Visitable {
 
-    protected void showPublicDeadLines() {
-        //super.showPublicDeadLines();
+    String courseID;
+    String deadlineId;
+    String deadlineDate;
+    String deadlineDetails;
+    String deadlineType;
+    int percentage;
+
+    @Override
+    //  accept()
+    public ArrayList findSchedule(Visitor visitor) {
+        return null;
     }
-    
 }

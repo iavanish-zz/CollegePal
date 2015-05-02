@@ -27,33 +27,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-
 import iavanish.collegepal.R;
 
 @TargetApi(3)
@@ -421,6 +394,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 
             Bundle b = new Bundle();
             b.putString("Email", email);
+            b.putString("Date", date_month_year);
             Intent intent = new Intent(view.getContext(), ShowDetailsOfDate.class);
             intent.putExtras(b);
             startActivity(intent);

@@ -17,7 +17,6 @@ import java.util.Collection;
 import java.util.List;
 
 import iavanish.collegepal.R;
-import iavanish.collegepal.Start.MultiSelectionSpinner;
 import iavanish.collegepal.Start.NothingSelectedSpinnerAdapter;
 import retrofit.RestAdapter;
 

@@ -1,9 +1,9 @@
 
 package iavanish.collegepal.Deadlines;
 
+import iavanish.collegepal.CommonClasses.Course;
 import iavanish.collegepal.CommonClasses.Date;
 import iavanish.collegepal.CommonClasses.Student;
-import iavanish.collegepal.CommonClasses.Course;
 
 /**
  *
