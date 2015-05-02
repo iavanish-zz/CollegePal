@@ -10,13 +10,18 @@ import android.widget.Toast;
 
 import com.google.common.collect.Iterables;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 import iavanish.collegepal.Courses.Course;
 import iavanish.collegepal.Courses.CourseClientApi;
+import iavanish.collegepal.Courses.CourseDashBoard;
 import iavanish.collegepal.Deadlines.Deadline;
 import iavanish.collegepal.Deadlines.DeadlineClientApi;
 import iavanish.collegepal.R;
+import iavanish.collegepal.Start.User;
+import iavanish.collegepal.Start.UserClientApi;
 import retrofit.RestAdapter;
 
 public class ShowDetailsOfDate extends Activity {
@@ -37,6 +42,16 @@ public class ShowDetailsOfDate extends Activity {
     Collection<Course> course;
     StringBuilder sb = new StringBuilder();
 
+    Collection<User> user;
+
+    private UserClientApi userService = new RestAdapter.Builder()
+            .setEndpoint(URL).setLogLevel(RestAdapter.LogLevel.FULL).build()
+            .create(UserClientApi.class);
+
+    private ArrayList<String> courseListEnrolled;
+
+    private ArrayList<String> tempCourseListEnrolled = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -53,8 +68,9 @@ public class ShowDetailsOfDate extends Activity {
 
         txt_viewDeadline =(TextView) findViewById(R.id.txt_viewDeadline);
 
-        ViewDeadlineTask tsk = new ViewDeadlineTask();
+        CourseEnrollmentTask tsk = new CourseEnrollmentTask();
         tsk.execute();
+
 
     }
 
@@ -62,37 +78,48 @@ public class ShowDetailsOfDate extends Activity {
 
         @Override
         protected Boolean doInBackground(String... params) {
-            Boolean ok;
-            Course tempCourse;
-            course = courseService.findByCourseNameIgnoreCase("Practice of Programming");
-            if (!course.isEmpty()) {
-                tempCourse = Iterables.getFirst(course, null);
-                _courseID = tempCourse.getCourseId();
-                System.out.println("CourseId"+_courseID);
+
+            ArrayList <String> courseID = new ArrayList <String> ();
+
+            Iterator iterator = tempCourseListEnrolled.iterator();
+
+            while(iterator.hasNext()) {
+                String temp = iterator.next().toString();
+                course = courseService.findByCourseNameIgnoreCase(temp);
+                if(!course.isEmpty()) {
+                    Course tempCourse = Iterables.getFirst(course, null);
+                    courseID.add(tempCourse.getCourseId());
+                }
             }
 
             Boolean appendSeparator = false;
             Deadline tempDeadline;
-            deadline = deadlineService.findByCourseIdIgnoreCase(_courseID);
-            if (!deadline.isEmpty()) {
-                for (int i = 0; i < deadline.size(); i++) {
-                    tempDeadline = Iterables.get(deadline, i);
-                    _courseID = tempDeadline.getCourseId();
-                    _deadlineId = tempDeadline.getDeadlineId();
-                    _emailId = tempDeadline.getEmailId();
-                    _deadlineDate = tempDeadline.getDate();
-                    _deadlineDetails = tempDeadline.getDeadlineDetails();
-                    _deadlineType = tempDeadline.getDeadlineType();
-                    if (appendSeparator)
-                        sb.append(",");
-                    appendSeparator = true;
-                    sb.append(_courseID);
-                    sb.append(_deadlineId);
-                    sb.append(_emailId);
-                    sb.append(_deadlineDate);
-                    sb.append(_deadlineDate);
-                    sb.append(_deadlineType);
-                    sb.append("\n");
+
+            iterator = courseID.iterator();
+
+            while(iterator.hasNext()) {
+                String temp = iterator.next().toString();
+                deadline = deadlineService.findByCourseIdIgnoreCase(temp);
+                if (!deadline.isEmpty()) {
+                    for (int i = 0; i < deadline.size(); i++) {
+                        tempDeadline = Iterables.get(deadline, i);
+                        _courseID = tempDeadline.getCourseId();
+                        _deadlineId = tempDeadline.getDeadlineId();
+                        _emailId = tempDeadline.getEmailId();
+                        _deadlineDate = tempDeadline.getDate();
+                        _deadlineDetails = tempDeadline.getDeadlineDetails();
+                        _deadlineType = tempDeadline.getDeadlineType();
+                        if (appendSeparator)
+                            sb.append(",");
+                        appendSeparator = true;
+                        sb.append(_courseID);
+                        sb.append(_deadlineId);
+                        sb.append(_emailId);
+                        sb.append(_deadlineDate);
+                        sb.append(_deadlineDate);
+                        sb.append(_deadlineType);
+                        sb.append("\n");
+                    }
                 }
             }
 
@@ -120,6 +147,42 @@ public class ShowDetailsOfDate extends Activity {
             Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
             Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private class CourseEnrollmentTask extends AsyncTask<String, Void, Boolean>
+    {
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            Boolean ok;
+            User tempUser;
+            user = userService.findByEmailIdIgnoreCase(email);
+            if (!user.isEmpty()) {
+
+                tempUser = Iterables.getFirst(user, null);
+                courseListEnrolled = new ArrayList <String>(tempUser.getCourseEnrolled());
+
+                int index = 1 ;
+                while (courseListEnrolled.size()> index) {
+                    tempCourseListEnrolled.add(courseListEnrolled.get(index));
+                    index++ ;
+                }
+
+                return true;
+            }
+            else
+                return false;
+        }
+        @Override
+        protected void onPostExecute(Boolean b)
+        {
+
+            Toast.makeText(getApplicationContext(), "Jai mata Di Done", Toast.LENGTH_LONG).show();
+
+            ViewDeadlineTask tsk = new ViewDeadlineTask();
+            tsk.execute();
+
         }
     }
 
