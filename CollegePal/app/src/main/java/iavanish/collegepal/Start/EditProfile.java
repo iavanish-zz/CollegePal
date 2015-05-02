@@ -176,9 +176,12 @@ public class EditProfile extends Activity implements OnItemSelectedListener {
 
             @Override
             public void onClick(View v) {
-
-                /*txtEmail.setText("");
-                txtName.setText("");*/
+                spinnerCourse.setSelection(0);
+                spinnerBranch.setSelection(0);
+                spinnerInstitution.setSelection(0);
+                spinnerSkills.setSelection(0);
+                spinnerCourseEnrolled.setSelection(0);
+                spinnerCourseOffering.setSelection(0);
 
             }
         });

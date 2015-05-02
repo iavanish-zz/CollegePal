@@ -85,6 +85,7 @@ public class CourseDashBoard extends Activity implements AdapterView.OnItemSelec
                     Bundle bundle = new Bundle();
                     bundle.putString("Email", _admin);
                     bundle.putString("CourseName", _courseName);
+                    System.out.println("Email in Course Dashboard"+_admin);
                     Intent intent = new Intent(getApplicationContext(), CourseDashBoardView.class);
                     intent.putExtras(bundle);
                     startActivity(intent);

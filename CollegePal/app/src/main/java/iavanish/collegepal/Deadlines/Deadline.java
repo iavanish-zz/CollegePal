@@ -9,6 +9,7 @@ public class Deadline {
 
     private String id;
 
+    private String str;
     private String deadlineId;
     private String courseId;
     private String emailId;
@@ -17,9 +18,10 @@ public class Deadline {
     private String deadlineType;
     private Boolean isDeadOver;
 
-    public Deadline(String id,String deadlineId, String courseId,String emailId, String date, String deadlineDetails, String deadlineType, Boolean isDeadOver) {
+    public Deadline(String id,String str, String deadlineId, String courseId,String emailId, String date, String deadlineDetails, String deadlineType, Boolean isDeadOver) {
         super();
         this.id=id;
+        this.str=str;
         this.deadlineId=deadlineId;
         this.courseId=courseId;
 
@@ -42,7 +44,13 @@ public class Deadline {
     public void setId(String temp){
         this.id = temp;
     }
+    public String getStr(){
+        return this.str;
+    }
 
+    public void setStr(String temp){
+        this.str= temp;
+    }
     public String getDeadlineId(){
         return this.deadlineId;
     }

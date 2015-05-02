@@ -2,6 +2,7 @@ package iavanish.collegepal.Courses;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,22 +15,29 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import iavanish.collegepal.R;
 import iavanish.collegepal.Start.DisplayProfile;
 import iavanish.collegepal.Start.MultiSelectionSpinner;
 import iavanish.collegepal.Start.NothingSelectedSpinnerAdapter;
+import retrofit.RestAdapter;
 
 public class CreateCourse extends Activity implements AdapterView.OnItemSelectedListener {
 
+    private final String URL = "http://192.168.55.74:8080";
+    Collection<Course> searchName, searchPreRequisites, searchInstructors, searchAdmin, searchCourse;
+    private CourseClientApi courseServiceSearch = new RestAdapter.Builder()
+            .setEndpoint(URL).setLogLevel(RestAdapter.LogLevel.FULL).build()
+            .create(CourseClientApi.class);
     private Button mRegisterCourseButton,mClearButton;
     private EditText txtCourseId,txtCourseName, txtAdmin, txtOverview, txtPostConditions;
     private Spinner spinnerInstitution;
     MultiSelectionSpinner spinnerPreRequisites, spinnerInstructors, spinnerCourseTA;
-
+    private ArrayList<Course> mListCourse = new ArrayList<Course>();
     String _courseID,_courseName,_admin,_overview,_postCondition,_institution,_preRequisities,_instructors, _ta;
-
+    Boolean register;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,9 +144,14 @@ public class CreateCourse extends Activity implements AdapterView.OnItemSelected
 
                 txtCourseId.setText("");
                 txtCourseName.setText("");
-                txtAdmin.setText("");
                 txtPostConditions.setText("");
                 txtOverview.setText("");
+                txtPostConditions.setText("");
+                spinnerInstitution.setSelection(0);
+                spinnerPreRequisites.setSelection(0);
+                spinnerInstructors.setSelection(0);
+                spinnerCourseTA.setSelection(0);
+
             }
         });
         mRegisterCourseButton.setOnClickListener(new View.OnClickListener() {
@@ -149,22 +162,8 @@ public class CreateCourse extends Activity implements AdapterView.OnItemSelected
                 if (_courseID.length() == 0 || _courseName.length() == 0 || _admin.length() == 0 || _overview.length() == 0 || _postCondition.length() == 0 || _institution.length() == 0 || _preRequisities.length() == 0 || _instructors.length() == 0 || _ta.length() == 0) {
                     Toast.makeText(getApplicationContext(), "Complete the form correctly", Toast.LENGTH_SHORT).show();
                 } else {
-
-                    Bundle b = new Bundle();
-
-                    b.putString("CourseID", _courseID);
-                    b.putString("CourseName", _courseName);
-                    b.putString("Admin", _admin);
-                    b.putString("Overview", _overview);
-                    b.putString("postCondition", _postCondition);
-                    b.putString("Institution", _institution);
-                    b.putString("preRequisites", _preRequisities);
-                    b.putString("Instructors", _instructors);
-                    b.putString("TA", _ta);
-
-                    Intent intent = new Intent(CreateCourse.this, DisplayCourse.class);
-                    intent.putExtras(b);
-                    startActivity(intent);
+                    RegisterCourseTask tsk = new RegisterCourseTask();
+                    tsk.execute();
                 }
             }
         });
@@ -187,7 +186,6 @@ public class CreateCourse extends Activity implements AdapterView.OnItemSelected
     public void getData() {
         _courseID = txtCourseId.getText().toString();
         _courseName = txtCourseName.getText().toString();
-        /*_admin=txtAdmin.getText().toString();*/
         _postCondition=txtPostConditions.getText().toString();
         _overview=txtOverview.getText().toString();
 
@@ -195,7 +193,64 @@ public class CreateCourse extends Activity implements AdapterView.OnItemSelected
         _instructors = spinnerInstructors.getSelectedItemsAsString();
         _ta = spinnerCourseTA.getSelectedItemsAsString();
     }
+    private class RegisterCourseTask extends AsyncTask<String, Void, Boolean> {
 
+        @Override
+        protected Boolean doInBackground(String... params) {
+            searchCourse = courseServiceSearch.getCourseList();
+
+            if (searchCourse.isEmpty()) {
+                return false;
+            } else {
+
+                return true;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Boolean b) {
+            if (b) {
+                if (!searchCourse.isEmpty()) {
+                    if (!mListCourse.containsAll(searchCourse))
+                        mListCourse.addAll(searchCourse);
+
+                }
+                int position = 0;
+                while (mListCourse.size()> position) {
+
+                    Course currentCourse = mListCourse.get(position);
+                    if(_courseID.equalsIgnoreCase(currentCourse.getCourseId()) ||  _courseName.equalsIgnoreCase(currentCourse.getCourseName())){
+                        Toast.makeText(getApplicationContext(), "Course is already registered, try different one!!", Toast.LENGTH_LONG).show();
+                        register=true;
+                        break;
+                    }
+                    else
+                        register=false;
+                    position++ ;
+                }
+                if(!register) {
+                    Bundle bundle = new Bundle();
+
+                    bundle.putString("CourseID", _courseID);
+                    bundle.putString("CourseName", _courseName);
+                    bundle.putString("Admin", _admin);
+                    bundle.putString("Overview", _overview);
+                    bundle.putString("postCondition", _postCondition);
+                    bundle.putString("Institution", _institution);
+                    bundle.putString("preRequisites", _preRequisities);
+                    bundle.putString("Instructors", _instructors);
+                    bundle.putString("TA", _ta);
+                    Intent intent = new Intent(CreateCourse.this, DisplayCourse.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                    Toast.makeText(getApplicationContext(), "Jai mata Di Done", Toast.LENGTH_LONG).show();
+                }
+            } else
+                Toast.makeText(getApplicationContext(), "kuch to gadbad hai!", Toast.LENGTH_LONG).show();
+
+            System.out.print("Search Profile");
+        }
+    }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 

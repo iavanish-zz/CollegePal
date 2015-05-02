@@ -329,61 +329,7 @@ public class CourseActivity extends Activity {
             System.out.print("Search Profile");
         }
     }
-    private class CourseCheckTask extends AsyncTask<String, Void, Boolean> {
 
-        @Override
-        protected Boolean doInBackground(String... params) {
-            searchAdmin = courseServiceSearch.findByAdminContainingIgnoreCase(_admin);
-
-            if (searchAdmin.isEmpty()) {
-                return false;
-            } else {
-
-                return true;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(Boolean b) {
-            if (b) {
-                if (!searchAdmin.isEmpty()) {
-                    if (!mListCourse.containsAll(searchAdmin))
-                        mListCourse.addAll(searchAdmin);
-
-               /* for(Course iter:searchPreRequisites){
-                    iter.getCourseId();
-                    txtPreferencesResult.setText(txtPreferencesResult.getText());
-                }*/
-                }
-                int position = 0;
-                Boolean flag=false;
-                _courseId=txtCourseId.getText().toString();
-                while (mListCourse.size() > position) {
-
-                    Course currentCourse = mListCourse.get(position);
-                    if(_courseId.equalsIgnoreCase(currentCourse.getCourseId()))
-                        flag=true;
-                    else
-                        flag=false;
-                    position++;
-                }
-                if(flag){
-                    Bundle bundle = new Bundle();
-                    bundle.putString("Email", _admin);
-                    bundle.putString("CourseID", _courseId);
-                    Intent intent = new Intent(getApplicationContext(), UpdateCourse.class);
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "Jai mata Di Done", Toast.LENGTH_LONG).show();
-                }
-                else
-                    Toast.makeText(getApplicationContext(), "No such course found!", Toast.LENGTH_LONG).show();
-            } else
-                Toast.makeText(getApplicationContext(), "Either you are not admin or No such course found!", Toast.LENGTH_LONG).show();
-
-            System.out.print("Search Profile");
-        }
-    }
     private class PopulateCourseTask extends AsyncTask<String, Void, Boolean> {
 
         @Override
@@ -522,7 +468,7 @@ public class CourseActivity extends Activity {
             Toast.makeText(getApplicationContext(), "Jai mata Di Done", Toast.LENGTH_LONG).show();
             Bundle bundle = new Bundle();
             bundle.putString("Email", _admin);
-
+            System.out.println("Email in CourseActivity"+_admin);
             Intent intent = new Intent(getApplicationContext(), CourseDashBoard.class);
             intent.putStringArrayListExtra("course_list_Enrolled", tempCourseListEnrolled);
             intent.putStringArrayListExtra("course_list_Offering", tempCourseListOffering);

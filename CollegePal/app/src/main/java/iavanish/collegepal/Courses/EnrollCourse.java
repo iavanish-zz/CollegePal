@@ -45,6 +45,7 @@ public class EnrollCourse extends Activity implements AdapterView.OnItemSelected
     String _courseName,_admin;
     Collection<Course> course;
     Collection<User> user;
+    Boolean enrollUser,enrollCourse;
     private ArrayList<Course> mListCourse = new ArrayList<Course>();
     private List <String> courseList = new ArrayList <String>();
     Collection<Course> searchCourse;
@@ -132,17 +133,24 @@ public class EnrollCourse extends Activity implements AdapterView.OnItemSelected
                 tempUser = Iterables.getFirst(user, null);
                 Vector<String> coursesEnrolled=new Vector<String>();
                 coursesEnrolled.addAll(tempUser.getCourseEnrolled());
-                coursesEnrolled.add(_courseName);
+                if(coursesEnrolled.contains(_courseName)) {
+                    enrollUser = true;
+                    return enrollUser;
+                }
+                else {
 
-                newUser = new User(tempUser.getStr(), tempUser.getStr(),
-                        tempUser.getEmailId(), tempUser.getName(), tempUser.getCourse(),tempUser.getBranch(),
-                        tempUser.getInstitution(),
-                        tempUser.getSkills(),
-                        coursesEnrolled ,
-                        tempUser.getCoursesOffering()
-                );
-                ok = userService.addUser(newUser);
-                return ok;
+                    coursesEnrolled.add(_courseName);
+                    newUser = new User(tempUser.getStr(), tempUser.getStr(),
+                            tempUser.getEmailId(), tempUser.getName(), tempUser.getCourse(), tempUser.getBranch(),
+                            tempUser.getInstitution(),
+                            tempUser.getSkills(),
+                            coursesEnrolled,
+                            tempUser.getCoursesOffering()
+                    );
+                    enrollUser=false;
+                    ok = userService.addUser(newUser);
+                    return ok;
+                }
             }
             else
                 return false;
@@ -150,9 +158,15 @@ public class EnrollCourse extends Activity implements AdapterView.OnItemSelected
         @Override
         protected void onPostExecute(Boolean b)
         {
-            RegisteredStudentUpdateTask tsk =new RegisteredStudentUpdateTask();
-            tsk.execute();
-
+            if(!enrollUser) {
+                System.out.println("hello");
+                RegisteredStudentUpdateTask tsk = new RegisteredStudentUpdateTask();
+                tsk.execute();
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "You are already registered in this course", Toast.LENGTH_LONG).show();
+                System.out.println("Already registered");
+            }
         }
     }
     private class RegisteredStudentUpdateTask extends AsyncTask<String, Void, Boolean>
@@ -169,9 +183,17 @@ public class EnrollCourse extends Activity implements AdapterView.OnItemSelected
                 tempCourse = Iterables.getFirst(course, null);
 
                 Vector<String> numberOfStudentRegistered=new Vector<String>();
+
                 numberOfStudentRegistered.addAll(tempCourse.getStudentRegistered());
-                numberOfStudentRegistered.add(_admin);
-                    newCourse = new Course(tempCourse.getStr(),tempCourse.getStr(), tempCourse.getCourseId(),
+                if(numberOfStudentRegistered.contains(_admin)) {
+                    enrollCourse = true;
+                    return enrollCourse;
+                }
+                else {
+
+                    numberOfStudentRegistered.add(_admin);
+                    enrollCourse=false;
+                    newCourse = new Course(tempCourse.getStr(), tempCourse.getStr(), tempCourse.getCourseId(),
                             _courseName, tempCourse.getAdmin(), tempCourse.getOverview(),
                             tempCourse.getInstitution(),
                             tempCourse.getPreRequisites(),
@@ -181,26 +203,29 @@ public class EnrollCourse extends Activity implements AdapterView.OnItemSelected
                             numberOfStudentRegistered);
                     ok = courseService.addCourse(newCourse);
                     return ok;
-
+                }
             }
             else
                 return false;
+
         }
         @Override
         protected void onPostExecute(Boolean b)
         {
+            if(!enrollCourse) {
+                Toast.makeText(getApplicationContext(), "Jai mata Di!! Enrollment Done", Toast.LENGTH_LONG).show();
+                System.out.println("test");
+                Bundle bundle = new Bundle();
+                bundle.putString("Email", _admin);
+                Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                onBackPressed();
 
-            Toast.makeText(getApplicationContext(), "Jai mata Di!! Enrollment Done", Toast.LENGTH_LONG).show();
-            System.out.println("test");
-            Bundle bundle = new Bundle();
-            bundle.putString("Email", _admin);
-            Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
-            intent.putExtras(bundle);
-            startActivity(intent);
-            onBackPressed();
-
-            System.out.println("Enrollment done");
-
+                System.out.println("Enrollment done");
+            }
+            else
+                Toast.makeText(getApplicationContext(), "You are already registered in this course", Toast.LENGTH_LONG).show();
         }
     }
     @Override

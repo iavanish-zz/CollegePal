@@ -150,12 +150,15 @@ public class UpdateCourse extends Activity implements AdapterView.OnItemSelected
 
             @Override
             public void onClick(View v) {
-
                 txtCourseId.setText("");
                 txtCourseName.setText("");
-                txtAdmin.setText("");
                 txtPostConditions.setText("");
                 txtOverview.setText("");
+                txtPostConditions.setText("");
+                spinnerInstitution.setSelection(0);
+                spinnerPreRequisites.setSelection(0);
+                spinnerInstructors.setSelection(0);
+                spinnerCourseTA.setSelection(0);
             }
         });
         mUpdateCourseButton.setOnClickListener(new View.OnClickListener() {
